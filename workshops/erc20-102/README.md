@@ -4,7 +4,7 @@
 Welcome! 
 This is an automated workshop that will dive deeper into managing ERC20 tokens. Specifically, we will explore patterns using `approve()` and `transferFrom()`. It is aimed at developers experienced in interacting with and writing smart contracts.
 
-> Note: This workshop is a follow-up to ERC20 101. If you haven't completed that workshop, please do so before starting this one.
+> Note: This workshop is a follow-up to [ERC20 101](https://github.com/Elli610/Blockchain-101/tree/main/workshops/erc20-101). If you haven't completed that workshop, please do so before starting this one.
 
 ## How to Work on This TD
 The TD has three components:
