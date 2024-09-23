@@ -1,0 +1,22 @@
+{
+  "name": "blockchain-101",
+  "version": "1.0.0",
+  "description": "A set of workshop to master blockchain knowledge and programming",
+  "workspaces": [
+    "workshops/*"
+  ],
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "blockchain",
+    "workshop",
+    "education",
+    "ethereum",
+    "solidity",
+    "web3",
+    "bitcoin"
+  ],
+  "author": "Elli610 <nathan@cypherlab.org>",
+  "license": "GPL-3.0"
+}
