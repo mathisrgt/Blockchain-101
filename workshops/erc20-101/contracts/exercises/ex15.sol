@@ -5,10 +5,12 @@ import "../exerciceTemplate.sol";
 import "./Iex14Solution.sol";
 
 /*
-Exercice 14: Completing all the workshop in a single transaction!
+Exercice 15: Completing all the workshop in a single transaction!
 In this exercice you should:
 - Implement a contract that complies with interface Iex14Solution
 - Call the appropriate function here to trigger collecting points
+
+Note: this contract only check if all 13 previous exercices were validated in the same transaction
 */
 
 contract ex15 is exerciceTemplate {

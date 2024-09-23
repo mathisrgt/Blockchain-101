@@ -9,6 +9,8 @@ Exercice 14: Completing all the workshop in a single transaction!
 In this exercice you should:
 - Implement a contract that complies with interface Iex14Solution
 - Call the appropriate function here to trigger collecting points
+
+Note: this contract only check if at least one of the exercices was validated
 */
 
 contract ex14 is exerciceTemplate {
@@ -23,7 +25,7 @@ contract ex14 is exerciceTemplate {
         Iex14Solution callerSolution = Iex14Solution(msg.sender);
         callerSolution.completeWorkshop();
 
-        // Checking that at least 10 exercices where validated
+        // Checking that at least 1 exercice was validated
         uint256 finalBalance = TDERC20.balanceOf(msg.sender);
         uint256 decimals = TDERC20.decimals();
         require(

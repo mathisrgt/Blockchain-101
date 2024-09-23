@@ -4,16 +4,11 @@ pragma solidity ^0.8.27;
 import "../exerciceTemplate.sol";
 
 /*
-Exercice 11: Finding a hidden exercice
+Exercice 12: Finding a hidden exercice
 In this exercice, you need to:
-- Read the code of TDERC20
-- Explore the ERC20 transactions history of the token's TD to figure out which exercises are able to credit points
+- Explore the block explorer to find the address of a this exercise contract (you can start your journey from the erc20 address)
 - Find ex12 address
 - Claim points
-*/
-
-/*
-
 */
 contract ex12 is exerciceTemplate {
     uint public aValueToInput;
