@@ -20,7 +20,7 @@ Your goal is to earn as many `TD-SOL-101` points as possible. Please note:
 
 ### Workshop Structure
 
-The instructions for each exercise are embedded within the respective exercise contract located in the [contracts/exercises](contracts/exercices) directory. Each exercise inherits from the [ExerciseTemplate](contracts/exerciceTemplate.sol), which contains shared logic for validating student work and distributing points.
+The instructions for each exercise are embedded within the respective exercise contract located in the [contracts/exercises](contracts/exercises) directory. Each exercise inherits from the [ExerciseTemplate](contracts/exerciseTemplate.sol), which contains shared logic for validating student work and distributing points.
 
 The exercises are deployed on the Sepolia testnet, and you can interact with them through:
 - [MyCrypto](https://mycrypto.com/contracts/interact) using the provided contract ABIs from the [build/contracts](build/contracts) folder.
@@ -43,19 +43,19 @@ Below is a table of the exercises, their corresponding smart contracts, and link
 | Topic                        | Contract Code                                         | Contract on Etherscan                                                                                     |
 |------------------------------|------------------------------------------------------|------------------------------------------------------------------------------------------------------------|
 | Points Counter ERC20          | [Points counter ERC20](contracts/TDERC20.sol)        | [0x491421D72FE3Ce027307dA0205A2f7Ca3115F0cb](https://sepolia.etherscan.io/address/0x491421D72FE3Ce027307dA0205A2f7Ca3115F0cb)                     |
-| Calling a Function            | [Ex01](contracts/exercices/ex01.sol)                 | [0x9DC488038175076Ab6A645682A9148D63D5841d4](https://sepolia.etherscan.io/address/0x9DC488038175076Ab6A645682A9148D63D5841d4)                     |
-| Payable Function              | [Ex02](contracts/exercices/ex02.sol)                 | [0x9119605dAFEFb09dfc620E9DA7dfD6Ec62A4c442](https://sepolia.etherscan.io/address/0x9119605dAFEFb09dfc620E9DA7dfD6Ec62A4c442)                     |
-| Requires                      | [Ex03](contracts/exercices/ex03.sol)                 | [0x452f85840E684d90a7AEa284F0d12FEe469F469a](https://sepolia.etherscan.io/address/0x452f85840E684d90a7AEa284F0d12FEe469F469a)                     |
-| Storage Variables             | [Ex04](contracts/exercices/ex04.sol)                 | [0xC24143b12c83Aaec0FB90fe90f219623bc048c0E](https://sepolia.etherscan.io/address/0xC24143b12c83Aaec0FB90fe90f219623bc048c0E)                     |
-| Mappings                      | [Ex05](contracts/exercices/ex05.sol)                 | [0xa85809209a62B63DFC31cDcd64D9916d6BD282Ea](https://sepolia.etherscan.io/address/0xa85809209a62B63DFC31cDcd64D9916d6BD282Ea)                     |
-| Variable Visibility           | [Ex06](contracts/exercices/ex06.sol)                 | [0xB60D22a999C28F72F458a05B2d0bcFdACa8C0ECE](https://sepolia.etherscan.io/address/0xB60D22a999C28F72F458a05B2d0bcFdACa8C0ECE)                     |
-| Events                        | [Ex07](contracts/exercices/ex07.sol)                 | [0x99f784B753A0564C99c1D33C027E4306767e186e](https://sepolia.etherscan.io/address/0x99f784B753A0564C99c1D33C027E4306767e186e)                     |
-| Structures                    | [Ex08](contracts/exercices/ex08.sol)                 | [0x762BcEC18b99A687b05FA4db69a8D80D1E9fa2E5](https://sepolia.etherscan.io/address/0x762BcEC18b99A687b05FA4db69a8D80D1E9fa2E5)                     |
-| Code History                  | [Ex09](contracts/exercices/ex09.sol)                 | [0xF3a5182fCd6b44D2519A987290277FDe38F452fc](https://sepolia.etherscan.io/address/0xF3a5182fCd6b44D2519A987290277FDe38F452fc)                     |
-| Past Transactions             | [Ex10](contracts/exercices/ex10.sol)                 | [0xA4Ee30cB5730a8e6609a532E6111E774bC206200](https://sepolia.etherscan.io/address/0xA4Ee30cB5730a8e6609a532E6111E774bC206200)                     |
-| Composability                 | [Ex11](contracts/exercices/ex11.sol)                 | [0x98c0415C1ABf4C4e08a6FeB1CaC95b9CEA4673F0](https://sepolia.etherscan.io/address/0x98c0415C1ABf4C4e08a6FeB1CaC95b9CEA4673F0)                     |
-| Blockchain Forensics          | [Ex12](contracts/exercices/ex12.sol)                 | Undisclosed                                                                                                |
-| Deploy Your Own Contract       | [Ex14](contracts/exercices/ex14.sol)                 | [0x6Df72d38CC7D5A181aa2A026e89d8D95a8576619](https://sepolia.etherscan.io/address/0x6Df72d38CC7D5A181aa2A026e89d8D95a8576619)                     |
-| All in One!                   | [Ex15](contracts/exercices/ex15.sol)                 | [0xeB5580Dc9c8bd981DE70B518Cc2d614E2CE7BDE4](https://sepolia.etherscan.io/address/0xeB5580Dc9c8bd981DE70B518Cc2d614E2CE7BDE4)                     |
+| Calling a Function            | [Ex01](contracts/exercises/ex01.sol)                 | [0x9DC488038175076Ab6A645682A9148D63D5841d4](https://sepolia.etherscan.io/address/0x9DC488038175076Ab6A645682A9148D63D5841d4)                     |
+| Payable Function              | [Ex02](contracts/exercises/ex02.sol)                 | [0x9119605dAFEFb09dfc620E9DA7dfD6Ec62A4c442](https://sepolia.etherscan.io/address/0x9119605dAFEFb09dfc620E9DA7dfD6Ec62A4c442)                     |
+| Requires                      | [Ex03](contracts/exercises/ex03.sol)                 | [0x452f85840E684d90a7AEa284F0d12FEe469F469a](https://sepolia.etherscan.io/address/0x452f85840E684d90a7AEa284F0d12FEe469F469a)                     |
+| Storage Variables             | [Ex04](contracts/exercises/ex04.sol)                 | [0xC24143b12c83Aaec0FB90fe90f219623bc048c0E](https://sepolia.etherscan.io/address/0xC24143b12c83Aaec0FB90fe90f219623bc048c0E)                     |
+| Mappings                      | [Ex05](contracts/exercises/ex05.sol)                 | [0xa85809209a62B63DFC31cDcd64D9916d6BD282Ea](https://sepolia.etherscan.io/address/0xa85809209a62B63DFC31cDcd64D9916d6BD282Ea)                     |
+| Variable Visibility           | [Ex06](contracts/exercises/ex06.sol)                 | [0xB60D22a999C28F72F458a05B2d0bcFdACa8C0ECE](https://sepolia.etherscan.io/address/0xB60D22a999C28F72F458a05B2d0bcFdACa8C0ECE)                     |
+| Events                        | [Ex07](contracts/exercises/ex07.sol)                 | [0x99f784B753A0564C99c1D33C027E4306767e186e](https://sepolia.etherscan.io/address/0x99f784B753A0564C99c1D33C027E4306767e186e)                     |
+| Structures                    | [Ex08](contracts/exercises/ex08.sol)                 | [0x762BcEC18b99A687b05FA4db69a8D80D1E9fa2E5](https://sepolia.etherscan.io/address/0x762BcEC18b99A687b05FA4db69a8D80D1E9fa2E5)                     |
+| Code History                  | [Ex09](contracts/exercises/ex09.sol)                 | [0xF3a5182fCd6b44D2519A987290277FDe38F452fc](https://sepolia.etherscan.io/address/0xF3a5182fCd6b44D2519A987290277FDe38F452fc)                     |
+| Past Transactions             | [Ex10](contracts/exercises/ex10.sol)                 | [0xA4Ee30cB5730a8e6609a532E6111E774bC206200](https://sepolia.etherscan.io/address/0xA4Ee30cB5730a8e6609a532E6111E774bC206200)                     |
+| Composability                 | [Ex11](contracts/exercises/ex11.sol)                 | [0x98c0415C1ABf4C4e08a6FeB1CaC95b9CEA4673F0](https://sepolia.etherscan.io/address/0x98c0415C1ABf4C4e08a6FeB1CaC95b9CEA4673F0)                     |
+| Blockchain Forensics          | [Ex12](contracts/exercises/ex12.sol)                 | Undisclosed                                                                                                |
+| Deploy Your Own Contract       | [Ex14](contracts/exercises/ex14.sol)                 | [0x6Df72d38CC7D5A181aa2A026e89d8D95a8576619](https://sepolia.etherscan.io/address/0x6Df72d38CC7D5A181aa2A026e89d8D95a8576619)                     |
+| All in One!                   | [Ex15](contracts/exercises/ex15.sol)                 | [0xeB5580Dc9c8bd981DE70B518Cc2d614E2CE7BDE4](https://sepolia.etherscan.io/address/0xeB5580Dc9c8bd981DE70B518Cc2d614E2CE7BDE4)                     |
 
 Good luck, and happy coding!

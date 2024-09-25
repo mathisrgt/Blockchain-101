@@ -1,11 +1,11 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.27;
 
-import "../exerciceTemplate.sol";
+import "../exerciseTemplate.sol";
 
 /*
-Exercice 7: Events
-In this exercice, you need to:
+Exercise 7: Events
+In this exercise, you need to:
 - Use function assignRank() to receive a rank in the random value store
 - Use a function to trigger an event
 - Use Etherscan to analyse this event
@@ -14,22 +14,22 @@ In this exercice, you need to:
 */
 
 /*
-What you need to know to complete this exercice
-A) What was included in the previous exercices
+What you need to know to complete this exercise
+A) What was included in the previous exercises
 B) Events are used to log data that is accessible from a full node, but not stored in the contracts variables.
 https://solidity.readthedocs.io/en/develop/introduction-to-smart-contracts.html#index-2
 C) Etherscan.io https://etherscan.io/ lets you visualize events that were fired during a given transaction
 
 */
-contract ex07 is exerciceTemplate {
+contract Ex07 is ExerciseTemplate {
     mapping(address => uint) private privateValues;
-    mapping(address => bool) public exerciceWasStarted;
+    mapping(address => bool) public exerciseWasStarted;
     uint[20] private randomValuesStore;
     uint public nextValueStoreRank;
 
     event showPrivateVariableInEvent(uint myVariable);
 
-    constructor(ERC20TD _TDERC20) exerciceTemplate(_TDERC20) {}
+    constructor(ERC20TD _TDERC20) ExerciseTemplate(_TDERC20) {}
 
     function setRandomValueStore(
         uint[20] memory _randomValuesStore
@@ -44,7 +44,7 @@ contract ex07 is exerciceTemplate {
         if (nextValueStoreRank >= randomValuesStore.length) {
             nextValueStoreRank = 0;
         }
-        exerciceWasStarted[msg.sender] = true;
+        exerciseWasStarted[msg.sender] = true;
     }
 
     function fireEvent() public {
@@ -53,10 +53,10 @@ contract ex07 is exerciceTemplate {
 
     function showYouKnowPrivateValue(uint _privateValue) public {
         require(privateValues[msg.sender] == _privateValue);
-        require(exerciceWasStarted[msg.sender] == true);
+        require(exerciseWasStarted[msg.sender] == true);
 
-        // Validating exercice
+        // Validating exercise
         creditStudent(2, msg.sender);
-        validateExercice(msg.sender);
+        validateExercise(msg.sender);
     }
 }

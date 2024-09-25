@@ -1,11 +1,11 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.27;
 
-import "../exerciceTemplate.sol";
+import "../exerciseTemplate.sol";
 
 /*
-Exercice 8: structures
-In this exercice, you need to:
+Exercise 8: structures
+In this exercise, you need to:
 - Create an object using a structure
 - Modify it
 - ??? Mystery task ???
@@ -14,12 +14,12 @@ In this exercice, you need to:
 */
 
 /*
-What you need to know to complete this exercice
-A) What was included in the previous exercices
+What you need to know to complete this exercise
+A) What was included in the previous exercises
 B) What a structure is https://solidity.readthedocs.io/en/develop/types.html#index-14
 
 */
-contract ex08 is exerciceTemplate {
+contract Ex08 is ExerciseTemplate {
     struct studentObject {
         address owner;
         address creator;
@@ -31,7 +31,7 @@ contract ex08 is exerciceTemplate {
 
     event createdAnObject(uint objectNumber);
 
-    constructor(ERC20TD _TDERC20) exerciceTemplate(_TDERC20) {}
+    constructor(ERC20TD _TDERC20) ExerciseTemplate(_TDERC20) {}
 
     function createObject(string memory _name) public {
         studentObject memory _studentObject;
@@ -65,8 +65,8 @@ contract ex08 is exerciceTemplate {
         // Check that the current owner of the object is a teacher/exercise
         require(TDERC20.teachers(studentObjects[_objectNumber].owner));
 
-        // Validating exercice
+        // Validating exercise
         creditStudent(2, msg.sender);
-        validateExercice(msg.sender);
+        validateExercise(msg.sender);
     }
 }

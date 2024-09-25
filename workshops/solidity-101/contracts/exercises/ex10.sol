@@ -1,11 +1,11 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.27;
 
-import "../exerciceTemplate.sol";
+import "../exerciseTemplate.sol";
 
 /*
-Exercice 10: Analyzing past transactions
-In this exercice, you need to:
+Exercise 10: Analyzing past transactions
+In this exercise, you need to:
 - Use Etherscan to visualize this contract's transaction history
 - Analyze events
 - Use a function 
@@ -13,20 +13,20 @@ In this exercice, you need to:
 */
 
 /*
-What you need to know to complete this exercice
-A) What was included in the previous exercices
+What you need to know to complete this exercise
+A) What was included in the previous exercises
 
 */
-contract ex10 is exerciceTemplate {
+contract Ex10 is ExerciseTemplate {
     mapping(address => uint) private privateValues;
-    mapping(address => bool) public exerciceWasStarted;
+    mapping(address => bool) public exerciseWasStarted;
     uint[20] private randomValuesStore;
     uint public nextValueStoreRank;
 
     event showPrivateVariableInEvent(uint i, uint myVariable);
     event showUserRank(uint i);
 
-    constructor(ERC20TD _TDERC20) exerciceTemplate(_TDERC20) {}
+    constructor(ERC20TD _TDERC20) ExerciseTemplate(_TDERC20) {}
 
     function setRandomValueStore(
         uint[20] memory _randomValuesStore
@@ -45,15 +45,15 @@ contract ex10 is exerciceTemplate {
         if (nextValueStoreRank >= randomValuesStore.length) {
             nextValueStoreRank = 0;
         }
-        exerciceWasStarted[msg.sender] = true;
+        exerciseWasStarted[msg.sender] = true;
     }
 
     function showYouKnowPrivateValue(uint _privateValue) public {
         require(privateValues[msg.sender] == _privateValue);
-        require(exerciceWasStarted[msg.sender] == true);
+        require(exerciseWasStarted[msg.sender] == true);
 
-        // Validating exercice
+        // Validating exercise
         creditStudent(2, msg.sender);
-        validateExercice(msg.sender);
+        validateExercise(msg.sender);
     }
 }

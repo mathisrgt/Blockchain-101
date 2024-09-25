@@ -3,17 +3,17 @@ pragma solidity ^0.8.27;
 import "./ERC20TD.sol";
 
 /*
-Common behavior in exercices
+Common behavior in exercises
 
-This contract describes functions that are common to most exercices. They help
+This contract describes functions that are common to most exercises. They help
 - Authentify students and teacher
 - Credit students
 */
 
-contract exerciceTemplate {
+contract ExerciseTemplate {
     ERC20TD TDERC20;
 
-    mapping(address => bool) public hasCompletedExercice;
+    mapping(address => bool) public hasCompletedExercise;
 
     event constructedCorrectly(address erc20Address);
 
@@ -23,13 +23,13 @@ contract exerciceTemplate {
     }
 
     function creditStudent(uint _points, address _studentAddress) internal {
-        if (!hasCompletedExercice[_studentAddress]) {
+        if (!hasCompletedExercise[_studentAddress]) {
             TDERC20.distributeTokens(_studentAddress, _points);
         }
     }
 
-    function validateExercice(address _studentAddress) internal {
-        hasCompletedExercice[_studentAddress] = true;
+    function validateExercise(address _studentAddress) internal {
+        hasCompletedExercise[_studentAddress] = true;
     }
 
     modifier onlyTeachers() {
