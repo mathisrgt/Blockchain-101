@@ -1,5 +1,4 @@
 import { ethers } from "hardhat";
-import { utils } from "ethers";
 
 async function main() {
     // Deploying ERC20 TD Token
