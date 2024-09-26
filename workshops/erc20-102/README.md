@@ -28,7 +28,7 @@ Your goal is to collect as many **TD-ERC20-102** points as possible. Please note
 - Install and configure a seed phrase or private key for deploying contracts in Hardhat.
 - Test your connection to the Sepolia network with `npx hardhat console --network sepolia`.
 - To deploy a contract, create a deployment script in the `scripts/` folder. Look at how the TD is deployed and iterate from there.
-- Deploy the contract to the Sepolia testnet with `npx hardhat run --network sepolia scripts/deploy.js`.
+- Deploy the contract to the Sepolia testnet with `npx hardhat run --network sepolia scripts/deploy.ts`.
 
 ## Points List
 ### Setting Up
