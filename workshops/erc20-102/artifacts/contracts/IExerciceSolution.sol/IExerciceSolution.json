@@ -1,7 +1,7 @@
 {
   "_format": "hh-sol-artifact-1",
-  "contractName": "IExerciceSolution",
-  "sourceName": "contracts/IExerciceSolution.sol",
+  "contractName": "IExerciseSolution",
+  "sourceName": "contracts/IExerciseSolution.sol",
   "abi": [
     {
       "inputs": [],

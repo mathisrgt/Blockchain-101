@@ -5,4 +5,4 @@ export { ERC20Claimable__factory } from "./ERC20Claimable__factory";
 export { ERC20TD__factory } from "./ERC20TD__factory";
 export { Evaluator__factory } from "./Evaluator__factory";
 export { IERC20Mintable__factory } from "./IERC20Mintable__factory";
-export { IExerciceSolution__factory } from "./IExerciceSolution__factory";
+export { IExerciseSolution__factory } from "./IExerciseSolution__factory";

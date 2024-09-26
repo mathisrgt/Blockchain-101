@@ -15,10 +15,10 @@ The TD has three components:
 Your goal is to collect as many **TD-ERC20-102** points as possible. Please note:
 - The `transfer` function of **TD-ERC20-102** has been disabled to encourage you to complete the TD with a single address.
 - In order to receive points, you will need to execute code in `Evaluator.sol` that triggers `TDERC20.distributeTokens(msg.sender, n);`, distributing `n` points.
-- This repo contains an interface `IExerciceSolution.sol`. Your ERC20 contract must conform to this interface to validate the exercises, meaning your contract needs to implement all the functions described in `IExerciceSolution.sol`.
+- This repo contains an interface `IExerciseSolution.sol`. Your ERC20 contract must conform to this interface to validate the exercises, meaning your contract needs to implement all the functions described in `IExerciseSolution.sol`.
 - A high-level description of what's expected for each exercise is in this readme. A detailed description of what's expected can be inferred by reading the code in `Evaluator.sol`.
 - The evaluator contract may need to make payments to purchase your tokens. Ensure it has enough ETH to do so. If not, you can send ETH directly to the contract.
-- You can use different contracts to validate different exercises. To update the evaluated exercise, call `submitExercice()` in the evaluator contract.
+- You can use different contracts to validate different exercises. To update the evaluated exercise, call `submitExercise()` in the evaluator contract.
 
 ### Getting to Work
 - Clone the repo to your machine.
@@ -40,24 +40,24 @@ These points will be awarded manually if you're unable to have your contract int
 - Claim your points by calling `ex1_claimedPoints()` in the evaluator (2 points).
 
 ### Calling Another Contract from Your Contract
-- Create a contract `ExerciceSolution` that can claim tokens from the teacher's ERC20. Keep track of addresses that claimed tokens and how many tokens they claimed in `ExerciceSolution`.
-- Deploy `ExerciceSolution` and submit it to the evaluator using `submitExercice()` (1 point).
+- Create a contract `ExerciseSolution` that can claim tokens from the teacher's ERC20. Keep track of addresses that claimed tokens and how many tokens they claimed in `ExerciseSolution`.
+- Deploy `ExerciseSolution` and submit it to the evaluator using `submitExercise()` (1 point).
 - Call `ex2_claimedFromContract` in the evaluator to prove your code works (2 points).
-- Create a function `withdrawTokens()` in `ExerciceSolution` to withdraw the claimable tokens from `ExerciceSolution` to the address that initially claimed them.
+- Create a function `withdrawTokens()` in `ExerciseSolution` to withdraw the claimable tokens from `ExerciseSolution` to the address that initially claimed them.
 - Call `ex3_withdrawFromContract` in the evaluator to prove your code works (2 points).
 
 ### Approve and transferFrom
-- Use the ERC20 function to allow your contract to manipulate your tokens. Call `ex4_approvedExerciceSolution()` to claim points (1 point).
-- Use ERC20 to revoke this authorization. Call `ex5_revokedExerciceSolution()` to claim points (1 point).
-- Create a function `depositTokens()` that allows a user to deposit claimable tokens in `ExerciceSolution` using `transferFrom()`.
+- Use the ERC20 function to allow your contract to manipulate your tokens. Call `ex4_approvedExerciseSolution()` to claim points (1 point).
+- Use ERC20 to revoke this authorization. Call `ex5_revokedExerciseSolution()` to claim points (1 point).
+- Create a function `depositTokens()` that allows a user to deposit claimable tokens in `ExerciseSolution` using `transferFrom()`.
 - Call `ex6_depositTokens` in the evaluator to prove your code works (2 points).
 
 ### Tracking User Deposits with a Deposit Wrapper ERC20
-- Create and deploy an ERC20 (`ExerciceSolutionToken`) to track user deposits. This ERC20 should be mintable, with minting authorization given to `ExerciceSolution`.
+- Create and deploy an ERC20 (`ExerciseSolutionToken`) to track user deposits. This ERC20 should be mintable, with minting authorization given to `ExerciseSolution`.
 - Call `ex7_createERC20` in the evaluator to prove your code works (2 points).
-- Update the deposit function so that the user's balance is tokenized. When a deposit is made in `ExerciceSolution`, tokens are minted in `ExerciceSolutionToken` and transferred to the address making the deposit.
+- Update the deposit function so that the user's balance is tokenized. When a deposit is made in `ExerciseSolution`, tokens are minted in `ExerciseSolutionToken` and transferred to the address making the deposit.
 - Call `ex8_depositAndMint` in the evaluator to prove your code works (2 points).
-- Update the `ExerciceSolution` withdraw function to use `transferFrom()` in `ExerciceSolutionToken`, burn these tokens, and return the claimable tokens.
+- Update the `ExerciseSolution` withdraw function to use `transferFrom()` in `ExerciseSolutionToken`, burn these tokens, and return the claimable tokens.
 - Call `ex9_withdrawAndBurn` in the evaluator to prove your code works (2 points).
 
 ### Extra Points

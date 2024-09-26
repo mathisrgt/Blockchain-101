@@ -4,9 +4,9 @@
 
 import { Contract, Interface, type ContractRunner } from "ethers";
 import type {
-  IExerciceSolution,
-  IExerciceSolutionInterface,
-} from "../../contracts/IExerciceSolution";
+  IExerciseSolution,
+  IExerciseSolutionInterface,
+} from "../../contracts/IExerciseSolution";
 
 const _abi = [
   {
@@ -88,15 +88,15 @@ const _abi = [
   },
 ] as const;
 
-export class IExerciceSolution__factory {
+export class IExerciseSolution__factory {
   static readonly abi = _abi;
-  static createInterface(): IExerciceSolutionInterface {
-    return new Interface(_abi) as IExerciceSolutionInterface;
+  static createInterface(): IExerciseSolutionInterface {
+    return new Interface(_abi) as IExerciseSolutionInterface;
   }
   static connect(
     address: string,
     runner?: ContractRunner | null
-  ): IExerciceSolution {
-    return new Contract(address, _abi, runner) as unknown as IExerciceSolution;
+  ): IExerciseSolution {
+    return new Contract(address, _abi, runner) as unknown as IExerciseSolution;
   }
 }

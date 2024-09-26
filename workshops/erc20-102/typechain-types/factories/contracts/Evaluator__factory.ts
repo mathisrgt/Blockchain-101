@@ -117,14 +117,14 @@ const _abi = [
   },
   {
     inputs: [],
-    name: "ex4_approvedExerciceSolution",
+    name: "ex4_approvedExerciseSolution",
     outputs: [],
     stateMutability: "nonpayable",
     type: "function",
   },
   {
     inputs: [],
-    name: "ex5_revokedExerciceSolution",
+    name: "ex5_revokedExerciseSolution",
     outputs: [],
     stateMutability: "nonpayable",
     type: "function",
@@ -170,7 +170,7 @@ const _abi = [
         type: "uint256",
       },
     ],
-    name: "exerciceProgression",
+    name: "exerciseProgression",
     outputs: [
       {
         internalType: "bool",
@@ -221,10 +221,10 @@ const _abi = [
         type: "address",
       },
     ],
-    name: "studentExerciceSolution",
+    name: "studentExerciseSolution",
     outputs: [
       {
-        internalType: "contract IExerciceSolution",
+        internalType: "contract IExerciseSolution",
         name: "",
         type: "address",
       },
@@ -235,12 +235,12 @@ const _abi = [
   {
     inputs: [
       {
-        internalType: "contract IExerciceSolution",
-        name: "studentExercice",
+        internalType: "contract IExerciseSolution",
+        name: "studentExercise",
         type: "address",
       },
     ],
-    name: "submitExercice",
+    name: "submitExercise",
     outputs: [],
     stateMutability: "nonpayable",
     type: "function",

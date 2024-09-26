@@ -5,4 +5,4 @@ export type { ERC20Claimable } from "./ERC20Claimable";
 export type { ERC20TD } from "./ERC20TD";
 export type { Evaluator } from "./Evaluator";
 export type { IERC20Mintable } from "./IERC20Mintable";
-export type { IExerciceSolution } from "./IExerciceSolution";
+export type { IExerciseSolution } from "./IExerciseSolution";

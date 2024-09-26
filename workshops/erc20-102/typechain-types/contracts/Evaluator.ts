@@ -30,17 +30,17 @@ export interface EvaluatorInterface extends Interface {
       | "ex1_claimedPoints"
       | "ex2_claimedFromContract"
       | "ex3_withdrawFromContract"
-      | "ex4_approvedExerciceSolution"
-      | "ex5_revokedExerciceSolution"
+      | "ex4_approvedExerciseSolution"
+      | "ex5_revokedExerciseSolution"
       | "ex6_depositTokens"
       | "ex7_createERC20"
       | "ex8_depositAndMint"
       | "ex9_withdrawAndBurn"
-      | "exerciceProgression"
+      | "exerciseProgression"
       | "hasBeenPaired"
       | "nextValueStoreRank"
-      | "studentExerciceSolution"
-      | "submitExercice"
+      | "studentExerciseSolution"
+      | "submitExercise"
       | "teachers"
   ): FunctionFragment;
 
@@ -65,11 +65,11 @@ export interface EvaluatorInterface extends Interface {
     values?: undefined
   ): string;
   encodeFunctionData(
-    functionFragment: "ex4_approvedExerciceSolution",
+    functionFragment: "ex4_approvedExerciseSolution",
     values?: undefined
   ): string;
   encodeFunctionData(
-    functionFragment: "ex5_revokedExerciceSolution",
+    functionFragment: "ex5_revokedExerciseSolution",
     values?: undefined
   ): string;
   encodeFunctionData(
@@ -89,7 +89,7 @@ export interface EvaluatorInterface extends Interface {
     values?: undefined
   ): string;
   encodeFunctionData(
-    functionFragment: "exerciceProgression",
+    functionFragment: "exerciseProgression",
     values: [AddressLike, BigNumberish]
   ): string;
   encodeFunctionData(
@@ -101,11 +101,11 @@ export interface EvaluatorInterface extends Interface {
     values?: undefined
   ): string;
   encodeFunctionData(
-    functionFragment: "studentExerciceSolution",
+    functionFragment: "studentExerciseSolution",
     values: [AddressLike]
   ): string;
   encodeFunctionData(
-    functionFragment: "submitExercice",
+    functionFragment: "submitExercise",
     values: [AddressLike]
   ): string;
   encodeFunctionData(
@@ -130,11 +130,11 @@ export interface EvaluatorInterface extends Interface {
     data: BytesLike
   ): Result;
   decodeFunctionResult(
-    functionFragment: "ex4_approvedExerciceSolution",
+    functionFragment: "ex4_approvedExerciseSolution",
     data: BytesLike
   ): Result;
   decodeFunctionResult(
-    functionFragment: "ex5_revokedExerciceSolution",
+    functionFragment: "ex5_revokedExerciseSolution",
     data: BytesLike
   ): Result;
   decodeFunctionResult(
@@ -154,7 +154,7 @@ export interface EvaluatorInterface extends Interface {
     data: BytesLike
   ): Result;
   decodeFunctionResult(
-    functionFragment: "exerciceProgression",
+    functionFragment: "exerciseProgression",
     data: BytesLike
   ): Result;
   decodeFunctionResult(
@@ -166,11 +166,11 @@ export interface EvaluatorInterface extends Interface {
     data: BytesLike
   ): Result;
   decodeFunctionResult(
-    functionFragment: "studentExerciceSolution",
+    functionFragment: "studentExerciseSolution",
     data: BytesLike
   ): Result;
   decodeFunctionResult(
-    functionFragment: "submitExercice",
+    functionFragment: "submitExercise",
     data: BytesLike
   ): Result;
   decodeFunctionResult(functionFragment: "teachers", data: BytesLike): Result;
@@ -259,9 +259,9 @@ export interface Evaluator extends BaseContract {
 
   ex3_withdrawFromContract: TypedContractMethod<[], [void], "nonpayable">;
 
-  ex4_approvedExerciceSolution: TypedContractMethod<[], [void], "nonpayable">;
+  ex4_approvedExerciseSolution: TypedContractMethod<[], [void], "nonpayable">;
 
-  ex5_revokedExerciceSolution: TypedContractMethod<[], [void], "nonpayable">;
+  ex5_revokedExerciseSolution: TypedContractMethod<[], [void], "nonpayable">;
 
   ex6_depositTokens: TypedContractMethod<[], [void], "nonpayable">;
 
@@ -271,7 +271,7 @@ export interface Evaluator extends BaseContract {
 
   ex9_withdrawAndBurn: TypedContractMethod<[], [void], "nonpayable">;
 
-  exerciceProgression: TypedContractMethod<
+  exerciseProgression: TypedContractMethod<
     [arg0: AddressLike, arg1: BigNumberish],
     [boolean],
     "view"
@@ -281,14 +281,14 @@ export interface Evaluator extends BaseContract {
 
   nextValueStoreRank: TypedContractMethod<[], [bigint], "view">;
 
-  studentExerciceSolution: TypedContractMethod<
+  studentExerciseSolution: TypedContractMethod<
     [arg0: AddressLike],
     [string],
     "view"
   >;
 
-  submitExercice: TypedContractMethod<
-    [studentExercice: AddressLike],
+  submitExercise: TypedContractMethod<
+    [studentExercise: AddressLike],
     [void],
     "nonpayable"
   >;
@@ -312,10 +312,10 @@ export interface Evaluator extends BaseContract {
     nameOrSignature: "ex3_withdrawFromContract"
   ): TypedContractMethod<[], [void], "nonpayable">;
   getFunction(
-    nameOrSignature: "ex4_approvedExerciceSolution"
+    nameOrSignature: "ex4_approvedExerciseSolution"
   ): TypedContractMethod<[], [void], "nonpayable">;
   getFunction(
-    nameOrSignature: "ex5_revokedExerciceSolution"
+    nameOrSignature: "ex5_revokedExerciseSolution"
   ): TypedContractMethod<[], [void], "nonpayable">;
   getFunction(
     nameOrSignature: "ex6_depositTokens"
@@ -330,7 +330,7 @@ export interface Evaluator extends BaseContract {
     nameOrSignature: "ex9_withdrawAndBurn"
   ): TypedContractMethod<[], [void], "nonpayable">;
   getFunction(
-    nameOrSignature: "exerciceProgression"
+    nameOrSignature: "exerciseProgression"
   ): TypedContractMethod<
     [arg0: AddressLike, arg1: BigNumberish],
     [boolean],
@@ -343,11 +343,11 @@ export interface Evaluator extends BaseContract {
     nameOrSignature: "nextValueStoreRank"
   ): TypedContractMethod<[], [bigint], "view">;
   getFunction(
-    nameOrSignature: "studentExerciceSolution"
+    nameOrSignature: "studentExerciseSolution"
   ): TypedContractMethod<[arg0: AddressLike], [string], "view">;
   getFunction(
-    nameOrSignature: "submitExercice"
-  ): TypedContractMethod<[studentExercice: AddressLike], [void], "nonpayable">;
+    nameOrSignature: "submitExercise"
+  ): TypedContractMethod<[studentExercise: AddressLike], [void], "nonpayable">;
   getFunction(
     nameOrSignature: "teachers"
   ): TypedContractMethod<[arg0: AddressLike], [boolean], "view">;

@@ -296,7 +296,7 @@
       "imports": [
         "./ERC20TD.sol",
         "./ERC20Claimable.sol",
-        "./IExerciceSolution.sol",
+        "./IExerciseSolution.sol",
         "./IERC20Mintable.sol"
       ],
       "versionPragmas": [
@@ -344,10 +344,10 @@
         "ERC20TD"
       ]
     },
-    "/home/elli/Documents/Blockchain-101/workshops/erc20-102/contracts/IExerciceSolution.sol": {
+    "/home/elli/Documents/Blockchain-101/workshops/erc20-102/contracts/IExerciseSolution.sol": {
       "lastModificationDate": 1727098585608,
       "contentHash": "7d686b617064865e43dbba8355a5d5a0",
-      "sourceName": "contracts/IExerciceSolution.sol",
+      "sourceName": "contracts/IExerciseSolution.sol",
       "solcConfig": {
         "version": "0.8.27",
         "settings": {
@@ -377,7 +377,7 @@
         ">=0.8.24"
       ],
       "artifacts": [
-        "IExerciceSolution"
+        "IExerciseSolution"
       ]
     },
     "/home/elli/Documents/Blockchain-101/workshops/erc20-102/contracts/IERC20Mintable.sol": {

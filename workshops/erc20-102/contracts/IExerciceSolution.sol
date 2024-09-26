@@ -2,7 +2,7 @@
 
 pragma solidity >=0.8.24;
 
-interface IExerciceSolution {
+interface IExerciseSolution {
     function claimTokensOnBehalf() external;
 
     function tokensInCustody(address callerAddress) external returns (uint256);

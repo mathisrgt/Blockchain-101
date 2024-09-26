@@ -6,7 +6,7 @@ pragma experimental ABIEncoderV2;
 
 import "./ERC20TD.sol";
 import "./ERC20Claimable.sol";
-import "./IExerciceSolution.sol";
+import "./IExerciseSolution.sol";
 import "./IERC20Mintable.sol";
 
 contract Evaluator {
@@ -18,8 +18,8 @@ contract Evaluator {
     string[20] private randomTickers;
     uint public nextValueStoreRank;
 
-    mapping(address => mapping(uint256 => bool)) public exerciceProgression;
-    mapping(address => IExerciceSolution) public studentExerciceSolution;
+    mapping(address => mapping(uint256 => bool)) public exerciseProgression;
+    mapping(address => IExerciseSolution) public studentExerciseSolution;
     mapping(address => bool) public hasBeenPaired;
 
     event newRandomTickerAndSupply(string ticker, uint256 supply);
@@ -46,8 +46,8 @@ contract Evaluator {
         );
 
         // Crediting points
-        if (!exerciceProgression[msg.sender][1]) {
-            exerciceProgression[msg.sender][1] = true;
+        if (!exerciseProgression[msg.sender][1]) {
+            exerciseProgression[msg.sender][1] = true;
             TDERC20.distributeTokens(msg.sender, 1);
             TDERC20.distributeTokens(msg.sender, 1);
             TDERC20.distributeTokens(msg.sender, 1);
@@ -57,132 +57,132 @@ contract Evaluator {
 
     function ex2_claimedFromContract() public {
         // Checking a solution was submitted
-        require(exerciceProgression[msg.sender][0], "No solution submitted");
+        require(exerciseProgression[msg.sender][0], "No solution submitted");
 
-        // Checking how many tokens ExerciceSolution holds
+        // Checking how many tokens ExerciseSolution holds
         uint256 solutionInitBalance = claimableERC20.balanceOf(
-            address(studentExerciceSolution[msg.sender])
+            address(studentExerciseSolution[msg.sender])
         );
 
-        // Claiming tokens through ExerciceSolution
-        studentExerciceSolution[msg.sender].claimTokensOnBehalf();
+        // Claiming tokens through ExerciseSolution
+        studentExerciseSolution[msg.sender].claimTokensOnBehalf();
 
-        // Verifying ExerciceSolution holds tokens
+        // Verifying ExerciseSolution holds tokens
         uint256 solutionEndBalance = claimableERC20.balanceOf(
-            address(studentExerciceSolution[msg.sender])
+            address(studentExerciseSolution[msg.sender])
         );
         require(
             solutionEndBalance - solutionInitBalance ==
                 claimableERC20.distributedAmount(),
-            "No claimable tokens minted to ExerciceSolution"
+            "No claimable tokens minted to ExerciseSolution"
         );
 
-        // Verifying ExerciceSolution kept track of our balance
-        studentExerciceSolution[msg.sender].claimTokensOnBehalf();
+        // Verifying ExerciseSolution kept track of our balance
+        studentExerciseSolution[msg.sender].claimTokensOnBehalf();
         require(
-            studentExerciceSolution[msg.sender].tokensInCustody(
+            studentExerciseSolution[msg.sender].tokensInCustody(
                 address(this)
             ) == 2 * claimableERC20.distributedAmount(),
-            "Balance of sender not kept in ExerciceSolution"
+            "Balance of sender not kept in ExerciseSolution"
         );
 
         // Crediting points
-        if (!exerciceProgression[msg.sender][2]) {
-            exerciceProgression[msg.sender][2] = true;
+        if (!exerciseProgression[msg.sender][2]) {
+            exerciseProgression[msg.sender][2] = true;
             TDERC20.distributeTokens(msg.sender, 2);
         }
     }
 
     function ex3_withdrawFromContract() public {
         // Checking a solution was submitted
-        require(exerciceProgression[msg.sender][0], "No solution submitted");
+        require(exerciseProgression[msg.sender][0], "No solution submitted");
 
-        // Checking how many tokens ExerciceSolution and Evaluator hold
+        // Checking how many tokens ExerciseSolution and Evaluator hold
         uint256 solutionInitBalance = claimableERC20.balanceOf(
-            address(studentExerciceSolution[msg.sender])
+            address(studentExerciseSolution[msg.sender])
         );
         uint256 selfInitBalance = claimableERC20.balanceOf(address(this));
-        uint256 amountToWithdraw = studentExerciceSolution[msg.sender]
+        uint256 amountToWithdraw = studentExerciseSolution[msg.sender]
             .tokensInCustody(address(this));
 
-        // Withdraw tokens through ExerciceSolution
-        studentExerciceSolution[msg.sender].withdrawTokens(amountToWithdraw);
+        // Withdraw tokens through ExerciseSolution
+        studentExerciseSolution[msg.sender].withdrawTokens(amountToWithdraw);
 
         // Verifying tokens where withdrew correctly
         uint256 solutionEndBalance = claimableERC20.balanceOf(
-            address(studentExerciceSolution[msg.sender])
+            address(studentExerciseSolution[msg.sender])
         );
         uint256 selfEndBalance = claimableERC20.balanceOf(address(this));
-        uint256 amountLeft = studentExerciceSolution[msg.sender]
+        uint256 amountLeft = studentExerciseSolution[msg.sender]
             .tokensInCustody(address(this));
 
         require(
             solutionInitBalance - solutionEndBalance == amountToWithdraw,
-            "ExerciceSolution has an incorrect amount of tokens"
+            "ExerciseSolution has an incorrect amount of tokens"
         );
         require(
             selfEndBalance - selfInitBalance == amountToWithdraw,
             "Evaluator has an incorrect amount of tokens"
         );
-        require(amountLeft == 0, "Tokens left held by ExerciceSolution");
+        require(amountLeft == 0, "Tokens left held by ExerciseSolution");
 
         // Crediting points
-        if (!exerciceProgression[msg.sender][3]) {
-            exerciceProgression[msg.sender][3] = true;
+        if (!exerciseProgression[msg.sender][3]) {
+            exerciseProgression[msg.sender][3] = true;
             TDERC20.distributeTokens(msg.sender, 2);
         }
     }
 
-    function ex4_approvedExerciceSolution() public {
+    function ex4_approvedExerciseSolution() public {
         // Checking a solution was submitted
-        require(exerciceProgression[msg.sender][0], "No solution submitted");
+        require(exerciseProgression[msg.sender][0], "No solution submitted");
 
         require(
             claimableERC20.allowance(
                 msg.sender,
-                address(studentExerciceSolution[msg.sender])
+                address(studentExerciseSolution[msg.sender])
             ) > 0,
-            "ExerciceSolution no allowed to spend msg.sender tokens"
+            "ExerciseSolution no allowed to spend msg.sender tokens"
         );
 
         // Crediting points
-        if (!exerciceProgression[msg.sender][4]) {
-            exerciceProgression[msg.sender][4] = true;
+        if (!exerciseProgression[msg.sender][4]) {
+            exerciseProgression[msg.sender][4] = true;
             TDERC20.distributeTokens(msg.sender, 1);
         }
     }
 
-    function ex5_revokedExerciceSolution() public {
+    function ex5_revokedExerciseSolution() public {
         // Checking a solution was submitted
-        require(exerciceProgression[msg.sender][0], "No solution submitted");
+        require(exerciseProgression[msg.sender][0], "No solution submitted");
 
         require(
             claimableERC20.allowance(
                 msg.sender,
-                address(studentExerciceSolution[msg.sender])
+                address(studentExerciseSolution[msg.sender])
             ) == 0,
-            "ExerciceSolution still allowed to spend msg.sender tokens"
+            "ExerciseSolution still allowed to spend msg.sender tokens"
         );
 
         // Crediting points
-        if (!exerciceProgression[msg.sender][5]) {
-            exerciceProgression[msg.sender][5] = true;
+        if (!exerciseProgression[msg.sender][5]) {
+            exerciseProgression[msg.sender][5] = true;
             TDERC20.distributeTokens(msg.sender, 1);
         }
     }
 
     function ex6_depositTokens() public {
         // Checking a solution was submitted
-        require(exerciceProgression[msg.sender][0], "No solution submitted");
+        require(exerciseProgression[msg.sender][0], "No solution submitted");
 
         uint256 amountToDeposit = 100;
 
-        // Checking how many tokens ExerciceSolution and Evaluator hold
+        // Checking how many tokens ExerciseSolution and Evaluator hold
         uint256 solutionInitBalance = claimableERC20.balanceOf(
-            address(studentExerciceSolution[msg.sender])
+            address(studentExerciseSolution[msg.sender])
         );
         uint256 selfInitBalance = claimableERC20.balanceOf(address(this));
-        uint256 amountDeposited = studentExerciceSolution[msg.sender]
+        uint256 amountDeposited = studentExerciseSolution[msg.sender]
             .tokensInCustody(address(this));
         require(
             selfInitBalance >= amountToDeposit,
@@ -191,24 +191,24 @@ contract Evaluator {
 
         // Approve student solution to manipulate our tokens
         claimableERC20.increaseAllowance(
-            address(studentExerciceSolution[msg.sender]),
+            address(studentExerciseSolution[msg.sender]),
             amountToDeposit
         );
 
         // Deposit tokens in student contract
-        studentExerciceSolution[msg.sender].depositTokens(amountToDeposit);
+        studentExerciseSolution[msg.sender].depositTokens(amountToDeposit);
 
         // Check balances are correct
         uint256 solutionEndBalance = claimableERC20.balanceOf(
-            address(studentExerciceSolution[msg.sender])
+            address(studentExerciseSolution[msg.sender])
         );
         uint256 selfEndBalance = claimableERC20.balanceOf(address(this));
-        uint256 amountLeft = studentExerciceSolution[msg.sender]
+        uint256 amountLeft = studentExerciseSolution[msg.sender]
             .tokensInCustody(address(this));
 
         require(
             solutionEndBalance - solutionInitBalance == amountToDeposit,
-            "ExerciceSolution has an incorrect amount of tokens"
+            "ExerciseSolution has an incorrect amount of tokens"
         );
         require(
             selfInitBalance - selfEndBalance == amountToDeposit,
@@ -216,43 +216,43 @@ contract Evaluator {
         );
         require(
             amountLeft - amountDeposited == amountToDeposit,
-            "Balance of Evaluator not credited correctly in ExerciceSolution"
+            "Balance of Evaluator not credited correctly in ExerciseSolution"
         );
 
         // Crediting points
-        if (!exerciceProgression[msg.sender][6]) {
-            exerciceProgression[msg.sender][6] = true;
+        if (!exerciseProgression[msg.sender][6]) {
+            exerciseProgression[msg.sender][6] = true;
             TDERC20.distributeTokens(msg.sender, 2);
         }
     }
 
     function ex7_createERC20() public {
         // Checking a solution was submitted
-        require(exerciceProgression[msg.sender][0], "No solution submitted");
+        require(exerciseProgression[msg.sender][0], "No solution submitted");
 
-        // Get ExerciceSolutionERC20 address
-        address exerciceSolutionERC20 = studentExerciceSolution[msg.sender]
+        // Get ExerciseSolutionERC20 address
+        address exerciseSolutionERC20 = studentExerciseSolution[msg.sender]
             .getERC20DepositAddress();
-        IERC20Mintable ExerciceSolutionERC20 = IERC20Mintable(
-            exerciceSolutionERC20
+        IERC20Mintable ExerciseSolutionERC20 = IERC20Mintable(
+            exerciseSolutionERC20
         );
 
-        // Check that ExerciceSolution is a minter to ExerciceSolutionERC20
-        // Check that we are not a minter to ExerciceSolutionERC20
+        // Check that ExerciseSolution is a minter to ExerciseSolutionERC20
+        // Check that we are not a minter to ExerciseSolutionERC20
         require(
-            ExerciceSolutionERC20.isMinter(
-                address(studentExerciceSolution[msg.sender])
+            ExerciseSolutionERC20.isMinter(
+                address(studentExerciseSolution[msg.sender])
             ),
-            "ExerciceSolution is not minter"
+            "ExerciseSolution is not minter"
         );
         require(
-            !ExerciceSolutionERC20.isMinter(address(this)),
+            !ExerciseSolutionERC20.isMinter(address(this)),
             "Evaluator is minter"
         );
 
-        // Check that we can not mint ExerciceSolutionERC20 tokens
+        // Check that we can not mint ExerciseSolutionERC20 tokens
         bool wasMintAccepted = false;
-        try ExerciceSolutionERC20.mint(address(this), 10000) {
+        try ExerciseSolutionERC20.mint(address(this), 10000) {
             wasMintAccepted = true;
         } catch {
             // This is executed in case revert() was used.
@@ -262,32 +262,32 @@ contract Evaluator {
         require(!wasMintAccepted, "Evaluator was able to mint");
 
         // Crediting points
-        if (!exerciceProgression[msg.sender][7]) {
-            exerciceProgression[msg.sender][7] = true;
+        if (!exerciseProgression[msg.sender][7]) {
+            exerciseProgression[msg.sender][7] = true;
             TDERC20.distributeTokens(msg.sender, 2);
         }
     }
 
     function ex8_depositAndMint() public {
         // Checking a solution was submitted
-        require(exerciceProgression[msg.sender][0], "No solution submitted");
+        require(exerciseProgression[msg.sender][0], "No solution submitted");
 
         uint256 amountToDeposit = 100;
 
-        // Checking how many tokens ExerciceSolution and Evaluator hold
+        // Checking how many tokens ExerciseSolution and Evaluator hold
         uint256 solutionInitBalance = claimableERC20.balanceOf(
-            address(studentExerciceSolution[msg.sender])
+            address(studentExerciseSolution[msg.sender])
         );
         uint256 selfInitBalance = claimableERC20.balanceOf(address(this));
-        address exerciceSolutionERC20 = studentExerciceSolution[msg.sender]
+        address exerciseSolutionERC20 = studentExerciseSolution[msg.sender]
             .getERC20DepositAddress();
-        IERC20Mintable ExerciceSolutionERC20 = IERC20Mintable(
-            exerciceSolutionERC20
+        IERC20Mintable ExerciseSolutionERC20 = IERC20Mintable(
+            exerciseSolutionERC20
         );
-        uint256 amountDeposited = ExerciceSolutionERC20.balanceOf(
+        uint256 amountDeposited = ExerciseSolutionERC20.balanceOf(
             address(this)
         );
-        uint256 initWrappedTotalSupply = ExerciceSolutionERC20.totalSupply();
+        uint256 initWrappedTotalSupply = ExerciseSolutionERC20.totalSupply();
         require(
             selfInitBalance >= amountToDeposit,
             "Evaluator does not hold enough tokens"
@@ -295,24 +295,24 @@ contract Evaluator {
 
         // Approve student solution to manipulate our tokens
         claimableERC20.increaseAllowance(
-            address(studentExerciceSolution[msg.sender]),
+            address(studentExerciseSolution[msg.sender]),
             amountToDeposit
         );
 
         // Deposit tokens in student contract
-        studentExerciceSolution[msg.sender].depositTokens(amountToDeposit);
+        studentExerciseSolution[msg.sender].depositTokens(amountToDeposit);
 
         // Check balances are correct
         uint256 solutionEndBalance = claimableERC20.balanceOf(
-            address(studentExerciceSolution[msg.sender])
+            address(studentExerciseSolution[msg.sender])
         );
         uint256 selfEndBalance = claimableERC20.balanceOf(address(this));
-        uint256 amountLeft = ExerciceSolutionERC20.balanceOf(address(this));
-        uint256 endWrappedTotalSupply = ExerciceSolutionERC20.totalSupply();
+        uint256 amountLeft = ExerciseSolutionERC20.balanceOf(address(this));
+        uint256 endWrappedTotalSupply = ExerciseSolutionERC20.totalSupply();
 
         require(
             solutionEndBalance - solutionInitBalance == amountToDeposit,
-            "ExerciceSolution has an incorrect amount of tokens"
+            "ExerciseSolution has an incorrect amount of tokens"
         );
         require(
             selfInitBalance - selfEndBalance == amountToDeposit,
@@ -320,82 +320,82 @@ contract Evaluator {
         );
         require(
             amountLeft - amountDeposited == amountToDeposit,
-            "Balance of Evaluator not credited correctly in ExerciceSolutionErc20"
+            "Balance of Evaluator not credited correctly in ExerciseSolutionErc20"
         );
         require(
             endWrappedTotalSupply - initWrappedTotalSupply == amountToDeposit,
-            "ExerciceSolutionErc20 were not minted correctly"
+            "ExerciseSolutionErc20 were not minted correctly"
         );
 
         // Crediting points
-        if (!exerciceProgression[msg.sender][8]) {
-            exerciceProgression[msg.sender][8] = true;
+        if (!exerciseProgression[msg.sender][8]) {
+            exerciseProgression[msg.sender][8] = true;
             TDERC20.distributeTokens(msg.sender, 2);
         }
     }
 
     function ex9_withdrawAndBurn() public {
         // Checking a solution was submitted
-        require(exerciceProgression[msg.sender][0], "No solution submitted");
+        require(exerciseProgression[msg.sender][0], "No solution submitted");
 
-        // Checking how many tokens ExerciceSolution and Evaluator hold
+        // Checking how many tokens ExerciseSolution and Evaluator hold
         uint256 solutionInitBalance = claimableERC20.balanceOf(
-            address(studentExerciceSolution[msg.sender])
+            address(studentExerciseSolution[msg.sender])
         );
         uint256 selfInitBalance = claimableERC20.balanceOf(address(this));
-        address exerciceSolutionERC20 = studentExerciceSolution[msg.sender]
+        address exerciseSolutionERC20 = studentExerciseSolution[msg.sender]
             .getERC20DepositAddress();
-        IERC20Mintable ExerciceSolutionERC20 = IERC20Mintable(
-            exerciceSolutionERC20
+        IERC20Mintable ExerciseSolutionERC20 = IERC20Mintable(
+            exerciseSolutionERC20
         );
-        uint256 amountToWithdraw = ExerciceSolutionERC20.balanceOf(
+        uint256 amountToWithdraw = ExerciseSolutionERC20.balanceOf(
             address(this)
         );
-        uint256 initWrappedTotalSupply = ExerciceSolutionERC20.totalSupply();
+        uint256 initWrappedTotalSupply = ExerciseSolutionERC20.totalSupply();
 
-        // Withdraw tokens through ExerciceSolution
-        studentExerciceSolution[msg.sender].withdrawTokens(amountToWithdraw);
+        // Withdraw tokens through ExerciseSolution
+        studentExerciseSolution[msg.sender].withdrawTokens(amountToWithdraw);
 
         // Verifying tokens where withdrew correctly
         uint256 solutionEndBalance = claimableERC20.balanceOf(
-            address(studentExerciceSolution[msg.sender])
+            address(studentExerciseSolution[msg.sender])
         );
         uint256 selfEndBalance = claimableERC20.balanceOf(address(this));
-        uint256 amountLeft = ExerciceSolutionERC20.balanceOf(address(this));
-        uint256 endWrappedTotalSupply = ExerciceSolutionERC20.totalSupply();
+        uint256 amountLeft = ExerciseSolutionERC20.balanceOf(address(this));
+        uint256 endWrappedTotalSupply = ExerciseSolutionERC20.totalSupply();
 
         require(
             solutionInitBalance - solutionEndBalance == amountToWithdraw,
-            "ExerciceSolution has an incorrect amount of tokens"
+            "ExerciseSolution has an incorrect amount of tokens"
         );
         require(
             selfEndBalance - selfInitBalance == amountToWithdraw,
             "Evaluator has an incorrect amount of tokens"
         );
-        require(amountLeft == 0, "Tokens still credited ExerciceSolutionErc20");
+        require(amountLeft == 0, "Tokens still credited ExerciseSolutionErc20");
         require(
             initWrappedTotalSupply - endWrappedTotalSupply == amountToWithdraw,
-            "ExerciceSolutionErc20 were not burned correctly"
+            "ExerciseSolutionErc20 were not burned correctly"
         );
 
         // Crediting points
-        if (!exerciceProgression[msg.sender][9]) {
-            exerciceProgression[msg.sender][9] = true;
+        if (!exerciseProgression[msg.sender][9]) {
+            exerciseProgression[msg.sender][9] = true;
             TDERC20.distributeTokens(msg.sender, 2);
         }
     }
 
     /* Internal functions and modifiers */
-    function submitExercice(IExerciceSolution studentExercice) public {
+    function submitExercise(IExerciseSolution studentExercise) public {
         // Checking this contract was not used by another group before
-        require(!hasBeenPaired[address(studentExercice)]);
+        require(!hasBeenPaired[address(studentExercise)]);
 
         // Assigning passed ERC20 as student ERC20
-        studentExerciceSolution[msg.sender] = studentExercice;
-        hasBeenPaired[address(studentExercice)] = true;
+        studentExerciseSolution[msg.sender] = studentExercise;
+        hasBeenPaired[address(studentExercise)] = true;
 
-        if (!exerciceProgression[msg.sender][0]) {
-            exerciceProgression[msg.sender][0] = true;
+        if (!exerciseProgression[msg.sender][0]) {
+            exerciseProgression[msg.sender][0] = true;
             TDERC20.distributeTokens(msg.sender, 1);
         }
     }

@@ -21,7 +21,7 @@ import type {
   TypedContractMethod,
 } from "../common";
 
-export interface IExerciceSolutionInterface extends Interface {
+export interface IExerciseSolutionInterface extends Interface {
   getFunction(
     nameOrSignature:
       | "claimTokensOnBehalf"
@@ -74,11 +74,11 @@ export interface IExerciceSolutionInterface extends Interface {
   ): Result;
 }
 
-export interface IExerciceSolution extends BaseContract {
-  connect(runner?: ContractRunner | null): IExerciceSolution;
+export interface IExerciseSolution extends BaseContract {
+  connect(runner?: ContractRunner | null): IExerciseSolution;
   waitForDeployment(): Promise<this>;
 
-  interface: IExerciceSolutionInterface;
+  interface: IExerciseSolutionInterface;
 
   queryFilter<TCEvent extends TypedContractEvent>(
     event: TCEvent,

@@ -20,5 +20,5 @@ export type { Evaluator } from "./contracts/Evaluator";
 export { Evaluator__factory } from "./factories/contracts/Evaluator__factory";
 export type { IERC20Mintable } from "./contracts/IERC20Mintable";
 export { IERC20Mintable__factory } from "./factories/contracts/IERC20Mintable__factory";
-export type { IExerciceSolution } from "./contracts/IExerciceSolution";
-export { IExerciceSolution__factory } from "./factories/contracts/IExerciceSolution__factory";
+export type { IExerciseSolution } from "./contracts/IExerciseSolution";
+export { IExerciseSolution__factory } from "./factories/contracts/IExerciseSolution__factory";

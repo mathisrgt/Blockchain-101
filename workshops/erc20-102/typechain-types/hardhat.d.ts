@@ -42,9 +42,9 @@ declare module "hardhat/types/runtime" {
       signerOrOptions?: ethers.Signer | FactoryOptions
     ): Promise<Contracts.IERC20Mintable__factory>;
     getContractFactory(
-      name: "IExerciceSolution",
+      name: "IExerciseSolution",
       signerOrOptions?: ethers.Signer | FactoryOptions
-    ): Promise<Contracts.IExerciceSolution__factory>;
+    ): Promise<Contracts.IExerciseSolution__factory>;
 
     getContractAt(
       name: "ERC20",
@@ -82,10 +82,10 @@ declare module "hardhat/types/runtime" {
       signer?: ethers.Signer
     ): Promise<Contracts.IERC20Mintable>;
     getContractAt(
-      name: "IExerciceSolution",
+      name: "IExerciseSolution",
       address: string | ethers.Addressable,
       signer?: ethers.Signer
-    ): Promise<Contracts.IExerciceSolution>;
+    ): Promise<Contracts.IExerciseSolution>;
 
     deployContract(
       name: "ERC20",
@@ -116,9 +116,9 @@ declare module "hardhat/types/runtime" {
       signerOrOptions?: ethers.Signer | DeployContractOptions
     ): Promise<Contracts.IERC20Mintable>;
     deployContract(
-      name: "IExerciceSolution",
+      name: "IExerciseSolution",
       signerOrOptions?: ethers.Signer | DeployContractOptions
-    ): Promise<Contracts.IExerciceSolution>;
+    ): Promise<Contracts.IExerciseSolution>;
 
     deployContract(
       name: "ERC20",
@@ -156,10 +156,10 @@ declare module "hardhat/types/runtime" {
       signerOrOptions?: ethers.Signer | DeployContractOptions
     ): Promise<Contracts.IERC20Mintable>;
     deployContract(
-      name: "IExerciceSolution",
+      name: "IExerciseSolution",
       args: any[],
       signerOrOptions?: ethers.Signer | DeployContractOptions
-    ): Promise<Contracts.IExerciceSolution>;
+    ): Promise<Contracts.IExerciseSolution>;
 
     // default types
     getContractFactory(
