@@ -42,7 +42,7 @@ These points will be awarded manually if you're unable to have your contract int
 ### Calling Another Contract from Your Contract
 - Create a contract `ExerciseSolution` that can claim tokens from the teacher's ERC20. Keep track of addresses that claimed tokens and how many tokens they claimed in `ExerciseSolution`.
 - Deploy `ExerciseSolution` and submit it to the evaluator using `submitExercise()` (1 point).
-- Call `ex2_claimedFromContract` in the evaluator to prove your code works (2 points).
+- Call `ex2_claimedFromContract` in the evaluator to prove your code works (1 point).
 - Create a function `withdrawTokens()` in `ExerciseSolution` to withdraw the claimable tokens from `ExerciseSolution` to the address that initially claimed them.
 - Call `ex3_withdrawFromContract` in the evaluator to prove your code works (2 points).
 
