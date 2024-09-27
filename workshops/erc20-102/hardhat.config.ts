@@ -6,13 +6,18 @@ import * as dotenv from "dotenv";
 dotenv.config();
 
 const PRIVATE_KEY = process.env.PRIVATE_KEY || "";
-const RPC_URL = process.env.RPC_URL || "";
+const SEPOLIA_RPC_URL = process.env.RPC_URL || "";
+const ARB_SEPOLIA_URL = process.env.ARB_SEPOLIA_URL || "";
 
 const config: HardhatUserConfig = {
   solidity: "0.8.27",
   networks: {
     sepolia: {
-      url: RPC_URL,
+      url: SEPOLIA_RPC_URL,
+      accounts: PRIVATE_KEY ? [PRIVATE_KEY] : [],
+    },
+    arbitrum_sepolia: {
+      url: ARB_SEPOLIA_URL,
       accounts: PRIVATE_KEY ? [PRIVATE_KEY] : [],
     },
   },

@@ -67,7 +67,12 @@ Extra points if you find bugs or suggest improvements to this TD, and submit a p
 
 ## TD Addresses
 Network: Sepolia
-
 - **TDToken**: [`0xeaD7680f5Bdb0aAa450399E8F49d4Efb9040Da08`](https://sepolia.etherscan.io/address/0xeaD7680f5Bdb0aAa450399E8F49d4Efb9040Da08)
 - **ClaimableToken**: [`0xD829b447AbABDb689C1F6DC81CCe3d29b37c5992`](https://sepolia.etherscan.io/address/0xD829b447AbABDb689C1F6DC81CCe3d29b37c5992)
 - **Evaluator**: [`0x822aF04084720Ade89E34e316c169435bBA9C886`](https://sepolia.etherscan.io/address/0x822aF04084720Ade89E34e316c169435bBA9C886)
+
+
+Network: Arbitrum Sepolia
+- **TDToken**: [0xC0E2957F3d92CC2d19Eb75a86B51663D56448Ebb](https://sepolia.arbiscan.io/address/0xC0E2957F3d92CC2d19Eb75a86B51663D56448Ebb)
+- **ClaimableToken**: [0x5ADeBf74a71360Be295534274041ceeD6A39977a](https://sepolia.arbiscan.io/address/0x5ADeBf74a71360Be295534274041ceeD6A39977a)
+- **Evaluator**: [0xD05c425C843c327c90D2Db98Aba9B715BAA51736](https://sepolia.arbiscan.io/address/0xD05c425C843c327c90D2Db98Aba9B715BAA51736)
