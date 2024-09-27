@@ -9,5 +9,7 @@ interface IERC20Mintable is IERC20 {
 
     function mint(address toAddress, uint256 amount) external;
 
+    function burn(uint256 amount) external;
+
     function isMinter(address minterAddress) external returns (bool);
 }
