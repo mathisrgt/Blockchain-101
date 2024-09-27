@@ -22,8 +22,11 @@ const config: HardhatUserConfig = {
     },
   },
   etherscan: {
-    apiKey: process.env.ETHERSCAN_API_KEY, // Optional: Add etherscan API key if you want to verify contracts
-  },
+    apiKey: {
+      sepolia: process.env.ETHERSCAN_API_KEY || "",
+      arbitrumSepolia: process.env.ARBISCAN_API_KEY || "",
+    },
+  }
 };
 
 export default config;
