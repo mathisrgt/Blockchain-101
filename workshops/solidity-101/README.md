@@ -1,5 +1,3 @@
-Here is a revised and improved version of the README:
-
 # Solidity-101
 
 ## Introduction
