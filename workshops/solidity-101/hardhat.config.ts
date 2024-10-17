@@ -15,6 +15,10 @@ const config: HardhatUserConfig = {
       url: RPC_URL,
       accounts: PRIVATE_KEY ? [PRIVATE_KEY] : [],
     },
+    holesky: {
+      url: process.env.HOLESKY_RPC_URL,
+      accounts: PRIVATE_KEY ? [PRIVATE_KEY] : [],
+    }
   },
   etherscan: {
     apiKey: process.env.ETHERSCAN_API_KEY, // Optional: Add etherscan API key if you want to verify contracts
