@@ -11,7 +11,7 @@ This workshop consists of two main components:
 - A series of 15 exercises that will mint and distribute `TD-SOL-101` tokens as you complete them.
 
 Your goal is to earn as many `TD-SOL-101` points as possible. Please note:
-- You will need testnet Ether to participate. Search for "Sepolia testnet faucet" on Google to acquire some.
+- You will need testnet Ether to participate. Search for "Sepolia/Holesky testnet faucet" on Google to acquire some.
 - The `transfer` function of the `TD-SOL-101` token has been disabled. This is to ensure you complete the workshop with a single wallet address.
 
 ## How to Get Started
@@ -20,7 +20,7 @@ Your goal is to earn as many `TD-SOL-101` points as possible. Please note:
 
 The instructions for each exercise are embedded within the respective exercise contract located in the [contracts/exercises](contracts/exercises) directory. Each exercise inherits from the [ExerciseTemplate](contracts/exerciseTemplate.sol), which contains shared logic for validating student work and distributing points.
 
-The exercises are deployed on the Sepolia testnet, and you can interact with them through:
+The exercises are deployed on the Sepolia and Holesky testnets, and you can interact with them through:
 - [MyCrypto](https://mycrypto.com/contracts/interact) using the provided contract ABIs from the [build/contracts](build/contracts) folder.
 - [Starton](https://app.starton.com/auth/login?redirect_to=https://app.starton.com/projects) using the provided contract ABIs from the [build/contracts](build/contracts) folder.
 - Alternatively, you can use Etherscan to interact with the contracts.
@@ -36,6 +36,31 @@ This function will credit you with `n` points. You can infer the expected action
 
 ## Exercise Contract Addresses
 
+### Ethereum Holesky Testnet
+Below is a table of the exercises, their corresponding smart contracts, and links to interact with them on Etherscan Holesky:
+
+
+| Topic                        | Contract Code                                         | Contract on Etherscan                                                                                     |
+|------------------------------|------------------------------------------------------|------------------------------------------------------------------------------------------------------------|
+| Points Counter ERC20          | [Points counter ERC20](contracts/TDERC20.sol)        | [0xD21f9A01AD5715D600cB013f21696d9d34bf1B51](https://holesky.etherscan.io/address/0xD21f9A01AD5715D600cB013f21696d9d34bf1B51)                     |
+| Calling a Function            | [Ex01](contracts/exercises/ex01.sol)                 | [0x84b30A129ca4e9Ab58E75b258bfCb4C3C676B297](https://holesky.etherscan.io/address/0x84b30A129ca4e9Ab58E75b258bfCb4C3C676B297)                     |
+| Payable Function              | [Ex02](contracts/exercises/ex02.sol)                 | [0xa0c92e581e1Eeace5550162d3A36Ab6eeFAa88c9](https://holesky.etherscan.io/address/0xa0c92e581e1Eeace5550162d3A36Ab6eeFAa88c9)                     |
+| Requires                      | [Ex03](contracts/exercises/ex03.sol)                 | [0xD462ad5eFcF62EA1cE81292A0D155b842778ff61](https://holesky.etherscan.io/address/0xD462ad5eFcF62EA1cE81292A0D155b842778ff61)                     |
+| Storage Variables             | [Ex04](contracts/exercises/ex04.sol)                 | [0x96D83Ce4b3716401EA2ff878677Ff6526fed6b54](https://holesky.etherscan.io/address/0x96D83Ce4b3716401EA2ff878677Ff6526fed6b54)                     |
+| Mappings                      | [Ex05](contracts/exercises/ex05.sol)                 | [0x3B0b8AE4F675906F0341942b9F29fAE291B1ce46](https://holesky.etherscan.io/address/0x3B0b8AE4F675906F0341942b9F29fAE291B1ce46)                     |
+| Variable Visibility           | [Ex06](contracts/exercises/ex06.sol)                 | [0x61c3141c471ac4Eaa38314d97aE9516E4FD5D28d](https://holesky.etherscan.io/address/0x61c3141c471ac4Eaa38314d97aE9516E4FD5D28d)                     |
+| Events                        | [Ex07](contracts/exercises/ex07.sol)                 | [0x9B3820A5a3D6EB6Bb987317aE00B40a21c7B0F92](https://holesky.etherscan.io/address/0x9B3820A5a3D6EB6Bb987317aE00B40a21c7B0F92)                     |
+| Structures                    | [Ex08](contracts/exercises/ex08.sol)                 | [0xC50373f9e613B0B9071F6b8F5222C2186FA01F0A](https://holesky.etherscan.io/address/0xC50373f9e613B0B9071F6b8F5222C2186FA01F0A)                     |
+| Code History                  | [Ex09](contracts/exercises/ex09.sol)                 | [0xd767643159353B2C8413aA37402Ad17620dc2F27](https://holesky.etherscan.io/address/0xd767643159353B2C8413aA37402Ad17620dc2F27)                     |
+| Past Transactions             | [Ex10](contracts/exercises/ex10.sol)                 | [0x14d3D6c18fB2B8840e0359f5cBF8d447eD96146F](https://holesky.etherscan.io/address/0x14d3D6c18fB2B8840e0359f5cBF8d447eD96146F)                     |
+| Composability                 | [Ex11](contracts/exercises/ex11.sol)                 | [0x19a26B746CA14840A7Bb093b9E5d728Ef64DE9FD](https://holesky.etherscan.io/address/0x19a26B746CA14840A7Bb093b9E5d728Ef64DE9FD)                     |
+| Blockchain Forensics          | [Ex12](contracts/exercises/ex12.sol)                 | Undisclosed           
+| Inline Assembly                 | [Ex13](contracts/exercises/ex13.sol)                 | [0xe36eB4ed99f68097EC2a803CEa9a2E8C0D6c4D60](https://holesky.etherscan.io/address/0xe36eB4ed99f68097EC2a803CEa9a2E8C0D6c4D60)                                                                                      |
+| Deploy Your Own Contract       | [Ex14](contracts/exercises/ex14.sol)                 | [0x2E2A36C2101c1EaFD4B07E82B99Eb5BDB7D0563F](https://holesky.etherscan.io/address/0x2E2A36C2101c1EaFD4B07E82B99Eb5BDB7D0563F)                     |
+| All in One!                   | [Ex15](contracts/exercises/ex15.sol)                 | [0x05A5EB2131C76612E0763C33016036F42B6840b7](https://holesky.etherscan.io/address/0x05A5EB2131C76612E0763C33016036F42B6840b7)       
+
+
+### Ethereum Sepolia Testnet
 Below is a table of the exercises, their corresponding smart contracts, and links to interact with them on Etherscan Sepolia:
 
 | Topic                        | Contract Code                                         | Contract on Etherscan                                                                                     |
@@ -56,4 +81,7 @@ Below is a table of the exercises, their corresponding smart contracts, and link
 | Deploy Your Own Contract       | [Ex14](contracts/exercises/ex14.sol)                 | [0x6Df72d38CC7D5A181aa2A026e89d8D95a8576619](https://sepolia.etherscan.io/address/0x6Df72d38CC7D5A181aa2A026e89d8D95a8576619)                     |
 | All in One!                   | [Ex15](contracts/exercises/ex15.sol)                 | [0xeB5580Dc9c8bd981DE70B518Cc2d614E2CE7BDE4](https://sepolia.etherscan.io/address/0xeB5580Dc9c8bd981DE70B518Cc2d614E2CE7BDE4)                     |
 
+
+
+---
 Good luck, and happy coding!

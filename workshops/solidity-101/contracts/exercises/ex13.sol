@@ -10,8 +10,8 @@ In this exercise, you need to:
 - The computed value must match `aValueToCompare`
 */
 
-contract ExInlineAssembly is ExerciseTemplate {
-    uint256 public constant aValueToCompare = 30;
+contract Ex13 is ExerciseTemplate {
+    uint256 public constant aValueToCompare = 484;
 
     constructor(ERC20TD _TDERC20) ExerciseTemplate(_TDERC20) {
     }
@@ -20,7 +20,7 @@ contract ExInlineAssembly is ExerciseTemplate {
         uint computedValue;
 
         assembly {
-            computedValue := add(add(mul(_valueToCompute, 2), 4), 192)
+            computedValue := add(sub(mul(_valueToCompute, 2), 4), 192)
         }
 
         require(computedValue == aValueToCompare, "Computed value does not match the expected result");

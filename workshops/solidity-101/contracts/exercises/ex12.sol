@@ -11,13 +11,13 @@ In this exercise, you need to:
 - Claim points
 */
 contract Ex12 is ExerciseTemplate {
-    uint public aValueToInput;
+    uint256 public aValueToInput;
 
     constructor(ERC20TD _TDERC20) ExerciseTemplate(_TDERC20) {
-        aValueToInput == 0;
+        aValueToInput = 0;
     }
 
-    function askForPoints(uint _valueToInput, uint _newValue) public {
+    function askForPoints(uint256 _valueToInput, uint256 _newValue) public {
         require(_valueToInput == aValueToInput);
         aValueToInput = _newValue;
 
