@@ -21,6 +21,7 @@ Your goal is to earn as many `TD-SOL-101` points as possible. Please note:
 The instructions for each exercise are embedded within the respective exercise contract located in the [contracts/exercises](contracts/exercises) directory. Each exercise inherits from the [ExerciseTemplate](contracts/exerciseTemplate.sol), which contains shared logic for validating student work and distributing points.
 
 The exercises are deployed on the Sepolia and Holesky testnets, and you can interact with them through:
+- [Remix](https://remix.ethereum.org/) by importing the contracts from the [contracts](contracts) folder.
 - [MyCrypto](https://mycrypto.com/contracts/interact) using the provided contract ABIs from the [build/contracts](build/contracts) folder.
 - [Starton](https://app.starton.com/auth/login?redirect_to=https://app.starton.com/projects) using the provided contract ABIs from the [build/contracts](build/contracts) folder.
 - Alternatively, you can use Etherscan to interact with the contracts.
