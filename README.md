@@ -1,5 +1,3 @@
-Here's an enhanced version of your README, incorporating emojis to make it more engaging and visually appealing:
-
 # 🌐 Blockchain-101: Mastering Web3 Knowledge & Blockchain Development
 
 Welcome to **Blockchain-101**, a collection of workshops designed to help you master the world of blockchain, no matter your level of knowledge. Whether you're just discovering Solidity or diving deep into advanced cryptography on the blockchain, DeFi, and account abstraction, there's something here for everyone! 🚀💡
