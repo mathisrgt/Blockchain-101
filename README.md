@@ -12,8 +12,8 @@ This repository contains workshops for all levels, covering topics like:
 
 - 🛠 **Solidity programming** (smart contracts):
   - [Solidity 101](./workshops/solidity/solidity-101/) -> An introduction to the Solidity language
-  - [ERC20 101](./workshops/solidity/erc20-101/) -> Learn to master the ERC20 token basic functions
-  - [ERC20 102](./workshops/solidity/erc20-102/) -> Dive deeper into managing ERC20 tokens _(Soon!)_
+  - [ERC20 101](./workshops/solidity/erc20-101/) -> Learn to master the ERC20 token basic functions _(Soon!)_
+  - [ERC20 102](./workshops/solidity/erc20-102/) -> Dive deeper into managing ERC20 tokens
   - NFTs _Coming soon_
 - 🌐 **Web3 nodes and infrastructure**:
   - [Bitcoind 101](./workshops/nodes/bitcoind-101/) -> Learn to setup and interact with a Bitcoin node and and electrum server
