@@ -67,8 +67,9 @@ I deployed this workshop on multiple networks. Choose the one that fits your nee
 > I encourage you to complete all the exercises on the same network.
 
 Network: Ethereum Holesky
-
-
+- **TDToken**: [`0x2A051582a0eA683F319660675F76fCdE8EdcC7F9`](https://holesky.etherscan.io/address/0x2A051582a0eA683F319660675F76fCdE8EdcC7F9)
+- **ClaimableToken**: [`0x25eAAb6F813137fC9BE0b4ada462aA535e2ea37a`](https://holesky.etherscan.io/address/0x25eAAb6F813137fC9BE0b4ada462aA535e2ea37a)
+- **Evaluator**: [`0xF9E27Ba9A5DE4621982CB0d9144ef5b12f81A0f7`](https://holesky.etherscan.io/address/0xF9E27Ba9A5DE4621982CB0d9144ef5b12f81A0f7)
 
 Network: Ethereum Sepolia
 - **TDToken**: [`0xeaD7680f5Bdb0aAa450399E8F49d4Efb9040Da08`](https://sepolia.etherscan.io/address/0xeaD7680f5Bdb0aAa450399E8F49d4Efb9040Da08)
