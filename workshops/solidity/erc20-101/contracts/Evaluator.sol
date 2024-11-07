@@ -2,13 +2,13 @@
 pragma solidity ^0.8.27;
 pragma experimental ABIEncoderV2;
 
-import "./ERC20TD.sol";
+import "./ERC20_101.sol";
 import "./IExerciceSolution.sol";
 import "./IAllInOneSolution.sol";
 
 contract Evaluator {
     mapping(address => bool) public teachers;
-    ERC20TD erc20tdAddress;
+    ERC20_101 erc20_101Address;
 
     uint256[20] private randomSupplies;
     string[20] private randomTickers;
@@ -24,9 +24,9 @@ contract Evaluator {
     event newRandomTickerAndSupply(string ticker, uint256 supply);
     event constructedCorrectly(address erc20Address);
 
-    constructor(ERC20TD _erc20tdAddress) {
-        erc20tdAddress = _erc20tdAddress;
-        emit constructedCorrectly(address(erc20tdAddress));
+    constructor(ERC20_101 _erc20_101Address) {
+        erc20_101Address = _erc20_101Address;
+        emit constructedCorrectly(address(erc20_101Address));
     }
 
     fallback() external payable {}
@@ -38,9 +38,9 @@ contract Evaluator {
 				if (!exerciceProgression[msg.sender][0]) {
 						exerciceProgression[msg.sender][0] = true;
 						// Setup project
-						erc20tdAddress.distributeTokens(msg.sender, 2);
+						erc20_101Address.distributeTokens(msg.sender, 2);
 						// Get an rpc access
-						erc20tdAddress.distributeTokens(msg.sender, 1);
+						erc20_101Address.distributeTokens(msg.sender, 1);
 				}
 		}
 
@@ -59,7 +59,7 @@ contract Evaluator {
         // Crediting points
         if (!exerciceProgression[msg.sender][1]) {
             exerciceProgression[msg.sender][1] = true;
-            erc20tdAddress.distributeTokens(msg.sender, 1);
+            erc20_101Address.distributeTokens(msg.sender, 1);
         }
     }
 
@@ -102,7 +102,7 @@ contract Evaluator {
         if (!exerciceProgression[msg.sender][2]) {
             exerciceProgression[msg.sender][2] = true;
             // Creating ERC20
-            erc20tdAddress.distributeTokens(msg.sender, 2);
+            erc20_101Address.distributeTokens(msg.sender, 2);
         }
     }
 
@@ -134,7 +134,7 @@ contract Evaluator {
         if (!exerciceProgression[msg.sender][3]) {
             exerciceProgression[msg.sender][3] = true;
             // Distribute points
-            erc20tdAddress.distributeTokens(msg.sender, 2);
+            erc20_101Address.distributeTokens(msg.sender, 2);
         }
     }
 
@@ -144,7 +144,7 @@ contract Evaluator {
         if (!exerciceProgression[msg.sender][4]) {
             exerciceProgression[msg.sender][4] = true;
             // Distribute points
-            erc20tdAddress.distributeTokens(msg.sender, 2);
+            erc20_101Address.distributeTokens(msg.sender, 2);
         }
     }
 
@@ -170,7 +170,7 @@ contract Evaluator {
         if (!exerciceProgression[msg.sender][5]) {
             exerciceProgression[msg.sender][5] = true;
             // Distribute points
-            erc20tdAddress.distributeTokens(msg.sender, 1);
+            erc20_101Address.distributeTokens(msg.sender, 1);
         }
     }
 
@@ -192,7 +192,7 @@ contract Evaluator {
         if (!exerciceProgression[msg.sender][6]) {
             exerciceProgression[msg.sender][6] = true;
             // Distribute points
-            erc20tdAddress.distributeTokens(msg.sender, 2);
+            erc20_101Address.distributeTokens(msg.sender, 2);
         }
     }
 
@@ -222,7 +222,7 @@ contract Evaluator {
         if (!exerciceProgression[msg.sender][7]) {
             exerciceProgression[msg.sender][7] = true;
             // Distribute points
-            erc20tdAddress.distributeTokens(msg.sender, 1);
+            erc20_101Address.distributeTokens(msg.sender, 1);
         }
     }
 
@@ -247,7 +247,7 @@ contract Evaluator {
         if (!exerciceProgression[msg.sender][8]) {
             exerciceProgression[msg.sender][8] = true;
             // Distribute points
-            erc20tdAddress.distributeTokens(msg.sender, 2);
+            erc20_101Address.distributeTokens(msg.sender, 2);
         }
     }
 
@@ -275,13 +275,13 @@ contract Evaluator {
         if (!exerciceProgression[msg.sender][9]) {
             exerciceProgression[msg.sender][9] = true;
             // Distribute points
-            erc20tdAddress.distributeTokens(msg.sender, 2);
+            erc20_101Address.distributeTokens(msg.sender, 2);
         }
     }
 
     function ex10_allInOne() external {
         // Checking that solution has no token yet
-        uint256 initialBalance = erc20tdAddress.balanceOf(msg.sender);
+        uint256 initialBalance = erc20_101Address.balanceOf(msg.sender);
         require(initialBalance == 0, "Solution should start with 0 points");
 
         // Calling the solution so that it solves the workshop
@@ -289,8 +289,8 @@ contract Evaluator {
         callerSolution.completeWorkshop();
 
         // Checking that at least 10 exercices where validated
-        uint256 finalBalance = erc20tdAddress.balanceOf(msg.sender);
-        uint256 decimals = erc20tdAddress.decimals();
+        uint256 finalBalance = erc20_101Address.balanceOf(msg.sender);
+        uint256 decimals = erc20_101Address.decimals();
         require(
             finalBalance >= 10 ** decimals * 18,
             "Solution should end with at least than 2 points"
@@ -299,14 +299,14 @@ contract Evaluator {
         if (!exerciceProgression[msg.sender][10]) {
             exerciceProgression[msg.sender][10] = true;
             // Distribute points
-            erc20tdAddress.distributeTokens(msg.sender, 2);
+            erc20_101Address.distributeTokens(msg.sender, 2);
         }
     }
 
     /* Internal functions and modifiers */
 
     modifier onlyTeachers() {
-        require(erc20tdAddress.teachers(msg.sender));
+        require(erc20_101Address.teachers(msg.sender));
         _;
     }
 
@@ -320,11 +320,11 @@ contract Evaluator {
         if (!exerciceProgression[msg.sender][0]) {
             exerciceProgression[msg.sender][0] = true;
             // Setup points
-            erc20tdAddress.distributeTokens(msg.sender, 2);
+            erc20_101Address.distributeTokens(msg.sender, 2);
             // Creating contract points
-            erc20tdAddress.distributeTokens(msg.sender, 2);
+            erc20_101Address.distributeTokens(msg.sender, 2);
             // Deploying contract points
-            erc20tdAddress.distributeTokens(msg.sender, 1);
+            erc20_101Address.distributeTokens(msg.sender, 1);
         }
     }
 

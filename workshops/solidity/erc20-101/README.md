@@ -7,11 +7,11 @@ Welcome! This is an automated workshop designed to guide you through deploying a
 
 ## How to Work on This TD
 The TD includes two key components:
-- An ERC20 token with the ticker **TD-ERC20-101**, used to keep track of points.
-- An evaluator contract that can mint and distribute **TD-ERC20-101** points.
+- An ERC20 token with the ticker **ERC20-101**, used to keep track of points.
+- An evaluator contract that can mint and distribute **ERC20-101** points.
 
-Your objective is to gather as many **TD-ERC20-101** points as possible. Key details include:
-- The `transfer` function for **TD-ERC20-101** is disabled to encourage completing the TD with a single address.
+Your objective is to gather as many **ERC20-101** points as possible. Key details include:
+- The `transfer` function for **ERC20-101** is disabled to encourage completing the TD with a single address.
 - You may use different ERC20 contracts to complete various exercises in this workshop. However, only one ERC20 contract is associated with an evaluated address at a time. To change the evaluated contract, call `submitExercice()` in the evaluator with that specific contract address.
 - To receive points, trigger the function `TDERC20.distributeTokens(msg.sender, n);` in `Evaluator.sol` to distribute `n` points.
 - Your ERC20 contract must implement all functions defined in `IExerciceSolution.sol` to validate each exercise.
@@ -61,8 +61,8 @@ Your objective is to gather as many **TD-ERC20-101** points as possible. Key det
 ### All in One
 Complete the entire workshop in a single transaction! Implement a `completeWorkshop()` function in a new contract. Call `ex10_allInOne()` to credit all points to the validating contract (2 points).
 
-## TD Addresses
+## Addresses
 Network: Ethereum Holesky
-- **ERC20TD**: [``](https://holesky.etherscan.io/address/)
-- **Evaluator**: [``](https://holesky.etherscan.io/address/)
+- **ERC20_101**: [`0x5C9Ba52c4F1a676D6ec88d8D2684FCC765b1E4A0`](https://holesky.etherscan.io/address/0x5C9Ba52c4F1a676D6ec88d8D2684FCC765b1E4A0)
+- **Evaluator**: [`0xB8d4fDEe700263F6f07800AECd702C3D0D74E601`](https://holesky.etherscan.io/address/0xB8d4fDEe700263F6f07800AECd702C3D0D74E601)
 
