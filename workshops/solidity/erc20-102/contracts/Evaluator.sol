@@ -4,14 +4,14 @@ pragma solidity >=0.8.24;
 
 pragma experimental ABIEncoderV2;
 
-import "./ERC20TD.sol";
+import "./ERC20_102.sol";
 import "./ERC20Claimable.sol";
 import "./IExerciseSolution.sol";
 import "./IERC20Mintable.sol";
 
 contract Evaluator {
     mapping(address => bool) public teachers;
-    ERC20TD TDERC20;
+    ERC20_102 TDERC20;
     ERC20Claimable claimableERC20;
 
     uint256[20] private randomSupplies;
@@ -28,7 +28,7 @@ contract Evaluator {
         address claimableERC20Address
     );
 
-    constructor(ERC20TD _TDERC20, ERC20Claimable _claimableERC20) {
+    constructor(ERC20_102 _TDERC20, ERC20Claimable _claimableERC20) {
         TDERC20 = _TDERC20;
         claimableERC20 = _claimableERC20;
         emit constructedCorrectly(address(TDERC20), address(claimableERC20));

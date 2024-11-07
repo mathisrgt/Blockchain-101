@@ -23,18 +23,18 @@ Your goal is to collect as many **TD-ERC20-102** points as possible. Please note
 ### Getting to Work
 - Clone the repo to your machine.
 - Install the required packages by running `npm install`.
-- Register for an Infura or alchemy account and obtain an API key.
+- Obtain an ethereum API key (from Alchemy, Infura, or any other provider).
 - Setup your `.env` file.
 - Install and configure a seed phrase or private key for deploying contracts in Hardhat.
-- Test your connection to the Sepolia network with `npx hardhat console --network sepolia`.
+- Test your connection to the Holesky network with `npx hardhat console --network holesky`.
 - To deploy a contract, create a deployment script in the `scripts/` folder. Look at how the TD is deployed and iterate from there.
-- Deploy the contract to the Sepolia testnet with `npx hardhat run --network sepolia scripts/deploy.ts`.
+- Deploy the contract to the Holesky testnet with `npx hardhat run --network holesky scripts/deploy.ts`.
 
 ## Points List
 ### Setting Up
 - Create a Git repository and share it with the teacher.
 - Get an API key (from Alchemy, Infura or any other provider) (1 point).
-- Install and configure Hardhat (1 point).
+- Install and configure [Hardhat](https://hardhat.org/) or [Foundry](https://book.getfoundry.sh/)(1 point).
 These points will be awarded manually if you're unable to have your contract interact with the evaluator, or automatically when claiming points.
 - Manually claim tokens on the claimable ERC20 (1 point).
 - Claim your points by calling `ex1_claimedPoints()` in the evaluator (2 points).
@@ -60,13 +60,18 @@ These points will be awarded manually if you're unable to have your contract int
 - Update the `ExerciseSolution` withdraw function to use `transferFrom()` in `ExerciseSolutionToken`, burn these tokens, and return the claimable tokens.
 - Call `ex9_withdrawAndBurn` in the evaluator to prove your code works (2 points).
 
-### Extra Points
-Extra points if you find bugs or suggest improvements to this TD, and submit a pull request to make it better. Ideas include:
-- Adding a way to check that the code of a specific contract was only used once (no copying).
-- Publishing the code of the Evaluator on Etherscan using the "Verify and Publish" functionality.
 
 ## TD Addresses
-Network: Sepolia
+I deployed this workshop on multiple networks. Choose the one that fits your needs.
+
+> I encourage you to complete all the exercises on the same network.
+
+Network: Ethereum Holesky
+- **TDToken**: [`0x2A051582a0eA683F319660675F76fCdE8EdcC7F9`](https://holesky.etherscan.io/address/0x2A051582a0eA683F319660675F76fCdE8EdcC7F9)
+- **ClaimableToken**: [`0x25eAAb6F813137fC9BE0b4ada462aA535e2ea37a`](https://holesky.etherscan.io/address/0x25eAAb6F813137fC9BE0b4ada462aA535e2ea37a)
+- **Evaluator**: [`0xF9E27Ba9A5DE4621982CB0d9144ef5b12f81A0f7`](https://holesky.etherscan.io/address/0xF9E27Ba9A5DE4621982CB0d9144ef5b12f81A0f7)
+
+Network: Ethereum Sepolia
 - **TDToken**: [`0xeaD7680f5Bdb0aAa450399E8F49d4Efb9040Da08`](https://sepolia.etherscan.io/address/0xeaD7680f5Bdb0aAa450399E8F49d4Efb9040Da08)
 - **ClaimableToken**: [`0xD829b447AbABDb689C1F6DC81CCe3d29b37c5992`](https://sepolia.etherscan.io/address/0xD829b447AbABDb689C1F6DC81CCe3d29b37c5992)
 - **Evaluator**: [`0x822aF04084720Ade89E34e316c169435bBA9C886`](https://sepolia.etherscan.io/address/0x822aF04084720Ade89E34e316c169435bBA9C886)

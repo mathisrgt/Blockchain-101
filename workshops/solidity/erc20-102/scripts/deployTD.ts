@@ -3,8 +3,8 @@ import { ethers } from "hardhat";
 async function main() {
     // Deploying ERC20 TD Token
     console.log("Deploying ERC20 TD Token");
-    const ERC20TD = await ethers.getContractFactory("ERC20TD");
-    const tdToken = await ERC20TD.deploy("TD-ERC20-101", "TD-ERC20-101", BigInt("0x108b2a2c28029094000000"));
+    const ERC20_102 = await ethers.getContractFactory("ERC20_102");
+    const tdToken = await ERC20_102.deploy("ERC20-102", "ERC20-102", BigInt("0x108b2a2c28029094000000"));
 
     await tdToken.waitForDeployment();
 
@@ -33,8 +33,6 @@ async function main() {
     console.log(`Evaluator deployed at: ${(evaluator as any).target}`);
 }
 
-// We recommend this pattern to be able to use async/await everywhere
-// and properly handle errors.
 main().catch((error) => {
   console.error(error);
   process.exitCode = 1;

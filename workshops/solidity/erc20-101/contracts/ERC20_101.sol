@@ -1,10 +1,8 @@
 // SPDX-License-Identifier: MIT
-
-pragma solidity >=0.8.24;
-
+pragma solidity ^0.8.27;
 import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 
-contract ERC20TD is ERC20 {
+contract ERC20_101 is ERC20 {
     mapping(address => bool) public teachers;
     event DenyTransfer(address recipient, uint256 amount);
     event DenyTransferFrom(address sender, address recipient, uint256 amount);

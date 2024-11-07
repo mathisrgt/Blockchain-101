@@ -12,6 +12,10 @@ const ARB_SEPOLIA_URL = process.env.ARB_SEPOLIA_URL || "";
 const config: HardhatUserConfig = {
   solidity: "0.8.27",
   networks: {
+    holesky: {
+      url: process.env.HOLESKY_RPC_URL,
+      accounts: PRIVATE_KEY ? [PRIVATE_KEY] : [],
+    },
     sepolia: {
       url: SEPOLIA_RPC_URL,
       accounts: PRIVATE_KEY ? [PRIVATE_KEY] : [],
@@ -22,10 +26,15 @@ const config: HardhatUserConfig = {
     },
   },
   etherscan: {
-    apiKey: {
+    apiKey: { // Optional: Add etherscan API key if you want to verify contracts
+      holesky: process.env.ETHERSCAN_API_KEY || "",
       sepolia: process.env.ETHERSCAN_API_KEY || "",
       arbitrumSepolia: process.env.ARBISCAN_API_KEY || "",
     },
+
+  },
+  sourcify: {
+    enabled: false
   }
 };
 
