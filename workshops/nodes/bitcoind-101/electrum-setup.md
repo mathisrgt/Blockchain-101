@@ -45,7 +45,7 @@ mv Fulcrum-*-x86_64-linux/* /home/<username>/fulcrum
 cd ~/fulcrum
 openssl req -newkey rsa:2048 -new -nodes -x509 -days 3650 -keyout key.pem -out cert.pem
 ```
-Note: You can leave all certificate questions blank by pressing Enter.
+> Note: You can leave all certificate questions blank by pressing Enter.
 
 ## 3. Configure Fulcrum
 
