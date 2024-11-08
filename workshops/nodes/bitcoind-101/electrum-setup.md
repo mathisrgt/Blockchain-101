@@ -112,6 +112,46 @@ sudo systemctl status fulcrum.service
 journalctl -fu fulcrum.service
 ```
 
+## Add banner to Fulcrum server
+Create a custom banner for your client by adding a banner. 
+Feel free to customize it as you wish !
+
+```bash
+sudo nano /data/fulcrum/banner.txt
+```
+
+Paste your own creation into banner.txt. Save and exit
+Example:
+```text
+    ____      __
+   / __/_  __/ /___________  ______ ___
+  / /_/ / / / / ___/ ___/ / / / __ `__ \
+ / __/ /_/ / / /__/ /  / /_/ / / / / / /
+/_/  \__,_/_/\___/_/   \__,_/_/ /_/ /_/
+
+server version: $SERVER_VERSION
+bitcoind version: $DAEMON_VERSION
+```
+
+Open fulcrum.conf
+```bash
+sudo nano /data/fulcrum/fulcrum.conf
+```
+
+Specify path to banner at the end of your configuration file. Save and exit
+```
+# Banner path
+banner = /data/fulcrum/banner.txt
+```
+
+Restart Fulcrum
+
+```
+sudo systemctl restart fulcrum.service
+```
+
+Now you should see your banner when connecting to Fulcrum with supported wallet (ex. Sparrow)
+
 ## 5. Connecting to Your Server
 
 **Once your server is synced and running**, you can connect to it from Electrum wallets.
