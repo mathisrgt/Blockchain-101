@@ -56,7 +56,7 @@ mv fulcrum-example-config.conf fulcrum.conf
 nano fulcrum.conf
 ```
 
-Add/modify the following settings:
+Update the following settings (do not add them randomly in the file. Otherwise fulcrum may not start):
 ```ini
 # Basic Options
 datadir = /home/<username>/fulcrum_db
