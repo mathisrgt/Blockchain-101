@@ -267,7 +267,7 @@ bitcoin-cli getconnectioncount
 bitcoin-cli getnetworkinfo
 ```
 Should show:
-- IPv4/IPv6 reachable: false
+- IPv4/IPv6 reachable: true
 - Onion reachable: true
 
 ## Useful Commands
