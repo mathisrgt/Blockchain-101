@@ -23,10 +23,10 @@ Your objective is to gather as many **ERC20-101** points as possible. Key detail
 - Install the required packages with `npm install`.
 - Obtain an ethereum API key (from Alchemy, Infura, or any other provider).
 - Create a `.env` file with a mnemonic for deployment and include your Infura and Etherscan API keys.
-- Test your Sepolia network connection with `npx hardhat console --network sepolia`.
+- Test your Holesky network connection with `npx hardhat console --network holesky`.
 - To deploy a contract, create a deployment script in the `scripts/` folder. Review the deployment setup in the repo and modify it for your contract.
 - Deploy your contract locally with `npx hardhat run scripts/your-script.js`.
-- Deploy to Sepolia using `npx hardhat run scripts/your-script.js --network sepolia`.
+- Deploy to Holesky using `npx hardhat run scripts/your-script.js --network holesky`.
 
 ## Points List
 ### Setting Up
@@ -39,7 +39,7 @@ Your objective is to gather as many **ERC20-101** points as possible. Key detail
 1. Call `ex1_getTickerAndSupply()` in the evaluator contract to receive a random ticker and initial supply for your ERC20 token (1 point).
    - Use the evaluator’s `readTicker()` and `readSupply()` functions to check your assigned ticker and supply.
 2. Create an ERC20 token contract with the assigned ticker and supply (2 points).
-3. Deploy your ERC20 contract to Sepolia (1 point).
+3. Deploy your ERC20 contract to Holesky (1 point).
 4. Call `submitExercice()` in the evaluator to register the evaluated contract for your address.
 5. Call `ex2_testErc20TickerAndSupply()` in the evaluator to confirm your setup and receive points (2 points).
 
