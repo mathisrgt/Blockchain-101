@@ -8,4 +8,5 @@ For each workshops, there are onchain marks represented by erc20 tokens automati
 We recommend you to follow the workshops in the following order:
 - [Solidity-101](./solidity-101)
 - [ERC20-101](./erc20-101)
+- [ERC721-101](./erc721-101/)
 - [ERC20-102](./erc20-102)

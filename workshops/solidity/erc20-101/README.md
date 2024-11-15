@@ -29,6 +29,8 @@ Your objective is to gather as many **ERC20-101** points as possible. Key detail
 - Deploy to Holesky using `npx hardhat run scripts/your-script.js --network holesky`.
 
 ## Points List
+> See the contract addresses and etherscan links at the end of this document.
+> 
 ### Setting Up
 - Create a Git repository and share it with the instructor.
 - Install [Hardhat](https://hardhat.org/) our [Foundry](https://book.getfoundry.sh/) and create a new project (2 point).
