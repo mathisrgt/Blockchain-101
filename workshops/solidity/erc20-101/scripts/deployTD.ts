@@ -1,14 +1,13 @@
 // Deploying the TD somewhere
 // To verify it on Etherscan:
 // npx hardhat verify --network <network> <address> <constructor arg 1> <constructor arg 2>
-import { ethers, run } from "hardhat";
+import { ethers } from "hardhat";
 
 async function main() {
   // Deploying contracts
   const ERC20_101 = await ethers.getContractFactory("ERC20_101");
   const Evaluator = await ethers.getContractFactory("Evaluator");
-  const totalSupply = ethers.toBigInt("951268184000000000000000000");
-  const erc20 = await ERC20_101.deploy("pg5ur3ya", "pg5ur3ya", totalSupply);
+  const erc20 = await ERC20_101.deploy("ERC20-101", "ERC20-101", 0);
 
   await erc20.waitForDeployment();
 
@@ -17,7 +16,7 @@ async function main() {
   await evaluator.waitForDeployment();
 
   console.log(
-    `ERC20_101 deployed at ${erc20.target}`
+    `ERC20_101 deployed at  ${erc20.target}`
   );
 
   console.log(
@@ -37,18 +36,6 @@ async function main() {
   console.log(randomTickers)
   console.log(randomSupplies)
   await evaluator.setRandomTickersAndSupply(randomSupplies, randomTickers);
-
-  // Verify contract
-  try {
-    console.log("Verifying contract...");
-    await run("verify:verify", {
-      address: await erc20.getAddress(),
-      constructorArguments: ["pg5ur3ya", "pg5ur3ya", totalSupply],
-    });
-    console.log("Contract verified successfully!");
-  } catch (error) {
-    console.error("Verification failed:", error);
-  }
 }
 
 main().catch((error) => {

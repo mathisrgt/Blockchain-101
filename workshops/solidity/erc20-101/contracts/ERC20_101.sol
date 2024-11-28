@@ -6,9 +6,6 @@ contract ERC20_101 is ERC20 {
     mapping(address => bool) public teachers;
     event DenyTransfer(address recipient, uint256 amount);
     event DenyTransferFrom(address sender, address recipient, uint256 amount);
-    event Withdrawn(address owner, uint256 amount);
-    event GetToken(address requestAccount, uint256 amountMinted);
-    event AmountBuy(address buyer, uint256 amount);
 
     constructor(
         string memory name,
@@ -56,28 +53,4 @@ contract ERC20_101 is ERC20 {
         emit DenyTransferFrom(sender, recipient, amount);
         return false;
     }
-
-    function withdrawEther() public {
-        uint256 contractBalance = address(this).balance;
-
-        require(contractBalance > 0, "No Ether available to withdraw");
-
-        payable(msg.sender).transfer(contractBalance);
-
-        emit Withdrawn(msg.sender, contractBalance);
-    }
-
-    function getToken() external {
-        uint256 amount = 100 * (10 ** decimals());
-
-        emit GetToken(msg.sender, amount);
-
-        _mint(msg.sender, amount);
-    }
-
-    // function buyToken() public payable {
-    //     uint256 amountBuy = (msg.value * 10 ** decimals());
-    //     _mint(msg.sender, amountBuy);
-    //     emit AmountBuy(msg.sender, amountBuy);
-    // }
 }
