@@ -11,6 +11,8 @@ import {
     Evaluator__factory,
     ExerciseSolution,
     ExerciseSolution__factory,
+    ExerciseSolutionERC20,
+    ExerciseSolutionERC20__factory
 } from "../typechain-types";
 
 describe("ExerciceSolution - Evaluator", function () {
@@ -206,5 +208,13 @@ describe("ExerciceSolution - Evaluator", function () {
 
         console.log("Performing ex6_depositTokens...");
         await Evaluator.connect(student).ex6_depositTokens();
+    })
+
+    it("Shoud perfom wrapped deposit token (ex7) from the evaluator", async function () {
+        const depositAddress = await ExerciseSolution.getERC20DepositAddress();
+        expect(depositAddress).to.not.equal(ethers.ZeroAddress);
+
+        console.log("Performing ex7_depositTokens...");
+        await Evaluator.connect(student).ex7_createERC20();
     })
 })

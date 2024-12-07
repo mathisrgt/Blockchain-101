@@ -3,15 +3,23 @@
 pragma solidity >=0.8.24;
 
 import "./ERC20Claimable.sol";
+import "./ERC20ExerciseSolution.sol";
 
 contract ExerciseSolution {
     using SafeERC20 for IERC20;
 
     mapping(address => uint256) public claimedTokens;
     IERC20 public immutable claimableERC20;
+    ExerciseSolutionERC20 public immutable depositAddressERC20;
 
     constructor(address _claimableERC20) {
         claimableERC20 = IERC20(_claimableERC20);
+        depositAddressERC20 = new ExerciseSolutionERC20(
+            "ExerciseSolutionToken",
+            "EST",
+            0,
+            address(this)
+        );
     }
 
     function claimTokensOnBehalf() external {
@@ -83,5 +91,9 @@ contract ExerciseSolution {
         claimedTokens[msg.sender] += amountToDeposit;
 
         return true;
+    }
+
+    function getERC20DepositAddress() external view returns (address) {
+        return address(depositAddressERC20);
     }
 }
