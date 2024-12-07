@@ -35,7 +35,7 @@ contract ExerciseSolution {
         return claimedTokens[user];
     }
 
-    function withdrawTokens(uint256 amountToWithdraw) external {
+    function withdrawTokens(uint256 amountToWithdraw) external returns (bool) {
         require(
             amountToWithdraw > 0,
             "The requested amount to withdraw must be greater than zero"
@@ -57,5 +57,31 @@ contract ExerciseSolution {
         claimedTokens[msg.sender] -= amountToWithdraw;
 
         claimableERC20.safeTransfer(msg.sender, amountToWithdraw);
+
+        return true;
+    }
+
+    function depositTokens(uint256 amountToDeposit) external returns (bool) {
+        require(
+            claimableERC20.balanceOf(msg.sender) >= amountToDeposit,
+            "Not enough funds."
+        );
+
+        require(
+            claimableERC20.allowance(msg.sender, address(this)) >=
+                amountToDeposit,
+            "Not enough allowance."
+        );
+
+        bool success = claimableERC20.transferFrom(
+            msg.sender,
+            address(this),
+            amountToDeposit
+        );
+        require(success, "Token transfer failed.");
+
+        claimedTokens[msg.sender] += amountToDeposit;
+
+        return true;
     }
 }

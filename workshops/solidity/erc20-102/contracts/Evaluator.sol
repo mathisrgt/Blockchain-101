@@ -95,36 +95,38 @@ contract Evaluator {
 
     function ex3_withdrawFromContract() public {
         // Checking a solution was submitted
-        require(exerciseProgression[msg.sender][0], "No solution submitted");
+        require(exerciseProgression[msg.sender][0], "No solution submitted"); // OK: 0x0B6B9ab12275aA7Dd50A9abF8Be6fa9311c82bE6
 
         // Checking how many tokens ExerciseSolution and Evaluator hold
         uint256 solutionInitBalance = claimableERC20.balanceOf(
-            address(studentExerciseSolution[msg.sender])
+            address(studentExerciseSolution[msg.sender]) // OK: 200005000004600000
         );
-        uint256 selfInitBalance = claimableERC20.balanceOf(address(this));
+        uint256 selfInitBalance = claimableERC20.balanceOf(address(this)); // OK: 600015000013798000
+
         uint256 amountToWithdraw = studentExerciseSolution[msg.sender]
-            .tokensInCustody(address(this));
+            .tokensInCustody(address(this)); // OK: 200005000004600000
 
         // Withdraw tokens through ExerciseSolution
-        studentExerciseSolution[msg.sender].withdrawTokens(amountToWithdraw);
+        studentExerciseSolution[msg.sender].withdrawTokens(amountToWithdraw); // Tested with my EOA, it seems to work
 
         // Verifying tokens where withdrew correctly
         uint256 solutionEndBalance = claimableERC20.balanceOf(
-            address(studentExerciseSolution[msg.sender])
+            address(studentExerciseSolution[msg.sender]) // it works with my EOA
         );
-        uint256 selfEndBalance = claimableERC20.balanceOf(address(this));
+        uint256 selfEndBalance = claimableERC20.balanceOf(address(this)); // 0 in the end
         uint256 amountLeft = studentExerciseSolution[msg.sender]
-            .tokensInCustody(address(this));
+            .tokensInCustody(address(this)); // Works correclty
 
         require(
-            solutionInitBalance - solutionEndBalance == amountToWithdraw,
+            solutionInitBalance - solutionEndBalance == amountToWithdraw, // claimAmount - 0 = amountWithdraw
             "ExerciseSolution has an incorrect amount of tokens"
         );
         require(
-            selfEndBalance - selfInitBalance == amountToWithdraw,
+            selfEndBalance - selfInitBalance == amountToWithdraw, // bigAmount - init = 200005000004600000
             "Evaluator has an incorrect amount of tokens"
         );
-        require(amountLeft == 0, "Tokens left held by ExerciseSolution");
+
+        require(amountLeft == 0, "Tokens left held by ExerciseSolution"); // supposed to work too
 
         // Crediting points
         if (!exerciseProgression[msg.sender][3]) {
@@ -181,7 +183,9 @@ contract Evaluator {
         uint256 solutionInitBalance = claimableERC20.balanceOf(
             address(studentExerciseSolution[msg.sender])
         );
+
         uint256 selfInitBalance = claimableERC20.balanceOf(address(this));
+
         uint256 amountDeposited = studentExerciseSolution[msg.sender]
             .tokensInCustody(address(this));
         require(

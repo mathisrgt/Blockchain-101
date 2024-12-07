@@ -8,7 +8,7 @@ async function main() {
   // Deploying ExerciseSolution
   console.log("Deploying ExerciseSolution");
   const ExerciseSolution = await ethers.getContractFactory("ExerciseSolution");
-  const exerciseSolution = await ExerciseSolution.deploy("0x5ADeBf74a71360Be295534274041ceeD6A39977a");
+  const exerciseSolution = await ExerciseSolution.deploy("0x4DDbbDC833199b423232cF2f15Ff21Ee1B80b78b");
 
   await exerciseSolution.waitForDeployment();
 
@@ -21,7 +21,7 @@ async function main() {
     console.log("Verifying ExerciseSolution contract...");
     await run("verify:verify", {
       address: await exerciseSolution.getAddress(),
-      constructorArguments: ["0x5ADeBf74a71360Be295534274041ceeD6A39977a"],
+      constructorArguments: ["0x4DDbbDC833199b423232cF2f15Ff21Ee1B80b78b"],
     });
     console.log("ExerciseSolution contract verified successfully!");
   } catch (error) {
