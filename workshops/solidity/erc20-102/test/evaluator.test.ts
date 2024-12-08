@@ -163,23 +163,6 @@ describe("ExerciceSolution - Evaluator", function () {
         await Evaluator.connect(student).ex5_revokedExerciseSolution();
     })
 
-    it("Shoud perfom revoke approval (ex5) from the evaluator", async function () {
-        const studentAddress = await student.getAddress();
-        const exSolutionAddress = await ExerciseSolution.getAddress();
-
-        console.log("Exercise progression (4):", await Evaluator.exerciseProgression(studentAddress, 4));
-
-        console.log("Performing the approval revoke...");
-        await ERC20Claimable.connect(student).approve(exSolutionAddress, 0);
-
-        const approvalAmount = await ERC20Claimable.connect(student).allowance(studentAddress, exSolutionAddress);
-        expect(approvalAmount).to.be.equal(0);
-
-        console.log("Performing ex5_revokedExerciseSolution...");
-        await Evaluator.connect(student).ex5_revokedExerciseSolution();
-    })
-
-
     it("Shoud perfom depositTokens - transferFrom (ex6) from the evaluator", async function () {
         const studentAddress = await student.getAddress();
         const exSolutionAddress = await ExerciseSolution.getAddress();
@@ -236,8 +219,8 @@ describe("ExerciceSolution - Evaluator", function () {
         const exSolutionBalance = await ExerciseSolutionERC20.balanceOf(studentAddress);
         console.log('Ex solution erc20 balance: ', exSolutionBalance);
 
-        await ExerciseSolutionERC20.connect(student).approve(exSolutionAddress, exSolutionBalance);
-        console.log('student allowance to ex solution contract (for erc20): ', exSolutionBalance);
+        // await ExerciseSolutionERC20.connect(student).approve(exSolutionAddress, exSolutionBalance);
+        // console.log('student allowance to ex solution contract (for erc20): ', exSolutionBalance);
 
         console.log("Performing ex9_withdrawAndBurn...");
         await Evaluator.connect(student).ex9_withdrawAndBurn();
