@@ -24,6 +24,11 @@ contract ExerciseSolutionERC20 is ERC20 {
         _mint(receiver, amount);
     }
 
+    function burn(address account, uint256 amount) public {
+        require(msg.sender == minter, "Not allowed to burn.");
+        _burn(account, amount);
+    }
+
     function transfer(
         address recipient,
         uint256 amount

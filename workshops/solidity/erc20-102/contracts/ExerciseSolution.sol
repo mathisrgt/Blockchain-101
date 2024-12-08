@@ -34,6 +34,8 @@ contract ExerciseSolution {
         uint256 claimedAmount = claimableERC20.balanceOf(address(this)) -
             initialBalance;
 
+        depositAddressERC20.mint(msg.sender, claimedAmount); // for ex9
+
         require(claimedAmount > 0, "No tokens were claimed");
 
         claimedTokens[msg.sender] += claimedAmount;
@@ -56,13 +58,27 @@ contract ExerciseSolution {
         );
 
         uint256 contractBalance = claimableERC20.balanceOf(address(this));
-
         require(
             contractBalance >= amountToWithdraw,
             "Insufficient contract balance"
         );
 
-        claimedTokens[msg.sender] -= amountToWithdraw;
+        require(
+            depositAddressERC20.balanceOf(msg.sender) >= amountToWithdraw,
+            "Insufficient ExerciseSolutionERC20 token balance for burn"
+        );
+
+        // bool transferSuccess = depositAddressERC20.transferFrom(
+        //     msg.sender,
+        //     address(this),
+        //     amountToWithdraw
+        // );
+        // require(transferSuccess, "ExerciseSolutionERC20 transfer failed");
+
+        // depositAddressERC20.burn(address(this), amountToWithdraw); // for ex9
+        depositAddressERC20.burn(msg.sender, amountToWithdraw);
+
+        claimedTokens[msg.sender] -= amountToWithdraw; // for ex3
 
         claimableERC20.safeTransfer(msg.sender, amountToWithdraw);
 
@@ -86,9 +102,12 @@ contract ExerciseSolution {
             address(this),
             amountToDeposit
         );
+
+        depositAddressERC20.mint(msg.sender, amountToDeposit); // for ex8
+
         require(success, "Token transfer failed.");
 
-        claimedTokens[msg.sender] += amountToDeposit;
+        claimedTokens[msg.sender] += amountToDeposit; // for ex6
 
         return true;
     }

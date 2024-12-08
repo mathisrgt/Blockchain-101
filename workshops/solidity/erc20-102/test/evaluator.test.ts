@@ -217,4 +217,29 @@ describe("ExerciceSolution - Evaluator", function () {
         console.log("Performing ex7_depositTokens...");
         await Evaluator.connect(student).ex7_createERC20();
     })
+
+    it("Shoud perfom deposit and mint (ex8) from the evaluator", async function () {
+        console.log("Performing ex8_depositAndMint...");
+        await Evaluator.connect(student).ex8_depositAndMint();
+    })
+
+    it("Shoud perfom withdrawal and burn (ex9) from the evaluator", async function () {
+        const studentAddress = await student.getAddress();
+        const exSolutionAddress = await ExerciseSolution.getAddress();
+
+        const depositAddress = await ExerciseSolution.getERC20DepositAddress();
+        const ExerciseSolutionERC20 = await ethers.getContractAt(
+            "ExerciseSolutionERC20",
+            depositAddress
+        );
+
+        const exSolutionBalance = await ExerciseSolutionERC20.balanceOf(studentAddress);
+        console.log('Ex solution erc20 balance: ', exSolutionBalance);
+
+        await ExerciseSolutionERC20.connect(student).approve(exSolutionAddress, exSolutionBalance);
+        console.log('student allowance to ex solution contract (for erc20): ', exSolutionBalance);
+
+        console.log("Performing ex9_withdrawAndBurn...");
+        await Evaluator.connect(student).ex9_withdrawAndBurn();
+    })
 })
